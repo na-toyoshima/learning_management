@@ -1,0 +1,2 @@
+class TestRange < ApplicationRecord
+end
