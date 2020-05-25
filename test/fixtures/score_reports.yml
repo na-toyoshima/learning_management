@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  grade: 1
+  term: 1
+  title: MyString
+  japanese: 1
+  math: 1
+  science: 1
+  social: 1
+  english: 1
+  p_e: 1
+  art: 1
+  music: 1
+  technical_course: 1
+  home_economics: 1
+  student_id: 1
+
+two:
+  grade: 1
+  term: 1
+  title: MyString
+  japanese: 1
+  math: 1
+  science: 1
+  social: 1
+  english: 1
+  p_e: 1
+  art: 1
+  music: 1
+  technical_course: 1
+  home_economics: 1
+  student_id: 1
