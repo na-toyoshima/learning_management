@@ -1,0 +1,2 @@
+module Parent::StudentsHelper
+end
