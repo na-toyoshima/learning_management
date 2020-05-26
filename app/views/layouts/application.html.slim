@@ -1,11 +1,3 @@
-doctype html
-html
-  head
-    title
-      | LearningManagement
-    = csrf_meta_tags
-    = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    = yield
+/ デフォルトを設定 content_for(:content)以外はyield
+
+= content_for?(:content) ? yield(:content) : yield
