@@ -11,7 +11,8 @@ class Student::DiariesController < Student::Base
   end
 
   def show
-    @diaries = Diary.find(params[:id])
+    @diary = Diary.find(params[:id])
+
   end
 
 
