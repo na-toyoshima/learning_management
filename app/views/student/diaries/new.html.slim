@@ -1,0 +1,39 @@
+.container
+  .row
+    .col-md-offset-2.col-md-8
+      = form_with(model:[@diary], url: student_diaries_path) do |f|
+        table
+          tr
+            th 今日の勉強時間
+            td
+              | 大体
+              = f.text_field :study_time
+              | 時間
+          tr
+            th 今日解いた問題数
+            td
+              | 大体
+              = f.text_field :solve_number
+              | 問
+          tr
+            th 間違えた問題の割合
+            td
+              | 大体
+              = f.text_field :incorrect_rate
+              | 割
+          tr
+            th 今日できるようになった問題・意識したこと
+            td
+              = f.text_area :can_body
+          tr
+            th 今日できなかったこと・難しかった問題
+            td
+              = f.text_area :cannot_body
+          tr
+            th 明日やること・意識すること
+            td
+              = f.text_area :next_body
+          tr
+            th 自己評価
+            td
+              = f.submit "勉強内容登録"
