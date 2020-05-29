@@ -5,5 +5,5 @@ class Student::StudentsController < Student::Base
     @diaries = @student.diaries
   end
 
-  
+
 end
