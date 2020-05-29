@@ -1,0 +1,54 @@
+.container
+  .row
+    .col-md-12
+      = form_with(model:[@test_range], url: student_student_test_ranges_path) do |f|
+        table
+          tr
+            | テスト名
+            = f.text_field :grade
+            | 年
+            = f.text_field :term
+            | 学期
+            = f.text_field :title
+            | テスト
+          tr
+            td
+              | テスト開始日
+              = f.date_field :start_date
+              | 　〜　
+              |テスト終了日
+              = f.date_field :end_date
+          br
+          tr
+            td
+              | 国語
+              = f.text_area :japanese
+              br
+              | 数学
+              = f.text_area :math
+              br
+              | 理科
+              = f.text_area :science
+              br
+              | 社会
+              = f.text_area :social
+              br
+              |英語
+              = f.text_area :english
+              br
+              |音楽
+              = f.text_area :music
+              br
+              |美術
+              = f.text_area :art
+              br
+              |保健体育
+              = f.text_area :p_e
+              br
+              |技術
+              = f.text_area :technical_course
+              br
+              |家庭科
+              = f.text_area :home_economics
+              br
+              = f.submit "テスト範囲登録"

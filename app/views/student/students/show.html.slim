@@ -16,11 +16,11 @@
       | フォロー承認待ち　○
   .row
     .col-md-2
-      =link_to "勉強内容登録", new_student_diary_path
+      =link_to "勉強内容登録", new_student_student_diary_path(student_id: current_student.id )
     .col-md-2
-      =link_to "テスト範囲登録", new_student_test_range_path
+      =link_to "テスト範囲登録", new_student_student_test_range_path(student_id: current_student.id )
     .col-md-2
-      =link_to "テスト結果登録", new_student_test_score_path
+      =link_to "テスト結果登録", new_student_student_test_score_path(student_id: current_student.id )
   .row
     .col-md-5
       |テスト結果
