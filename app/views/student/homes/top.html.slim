@@ -1,0 +1,17 @@
+.container
+  .row
+    .col-md-12
+      | このサイトについて　
+      = link_to "クリック！", student_about_path
+  .row
+    .col-md-12
+      | 生徒　　
+      = link_to "新規登録", new_student_registration_path
+      | 　　
+      = link_to "ログイン", new_student_session_path
+  .row
+    .col-md-12
+      | 保護者　　
+      = link_to "新規登録", new_parent_registration_path
+      | 　　
+      = link_to "ログイン", new_parent_session_path

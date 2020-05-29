@@ -1,0 +1,51 @@
+.container
+  .row
+    .col-md-2
+      | 画像表示
+    .col-md-2
+      | ユーザーネーム
+      br
+      =link_to "生徒情報編集", edit_student_student_path
+    .col-md-6
+      | 今日やることの表示
+    .col-md-2
+      | フォロー数　○
+      br
+      | フォロワー数　○
+      br
+      | フォロー承認待ち　○
+  .row
+    .col-md-2
+      =link_to "勉強内容登録", new_student_student_diary_path(student_id: current_student.id )
+    .col-md-2
+      =link_to "テスト範囲登録", new_student_student_test_range_path(student_id: current_student.id )
+    .col-md-2
+      =link_to "テスト結果登録", new_student_student_test_score_path(student_id: current_student.id )
+  .row
+    .col-md-5
+      |テスト結果
+      - @test_scores.each do |score|
+        = score.title
+        table
+            tr
+              th 国語
+              th 数学
+              th 理科
+              th 社会
+              th 英語
+            tr
+              td
+                = score.japanese
+              td
+                = score.math
+              td
+                = score.science
+              td
+                = score.social
+              td
+                = score.english
+
+      br
+      |ユーザー検索
+    .col-md-7
+      |最近の勉強内容
