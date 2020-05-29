@@ -1,11 +1,12 @@
 .container
   .row
     .col-md-12
-      -@reports.each do |report|
-        =report.grade
+        |テスト名　
+        =@score.grade
         |年
-        =report.term
-        |学期　内申点
+        =@score.term
+        |学期
+        =@score.title
         table
           tr
             td 国語　　
@@ -15,15 +16,15 @@
             td 英語　　
           tr
             td
-              =report.japanese
+              =@score.japanese
             td
-              =report.math
+              =@score.math
             td
-              =report.science
+              =@score.science
             td
-              =report.social
+              =@score.social
             td
-              =report.english
+              =@score.english
           tr
             td 音楽　　
             td 美術　　
@@ -32,15 +33,15 @@
             td 家庭科　　
           tr
             td
-              =report.music
+              =@score.music
             td
-              =report.art
+              =@score.art
             td
-              =report.p_e
+              =@score.p_e
             td
-              =report.technical_course
+              =@score.technical_course
             td
-              =report.home_economics
+              =@score.home_economics
           tr
             td
-              = link_to "内申点編集", edit_student_student_score_report_path(student_id: current_student.id, id:report.id)
+              =link_to "テスト結果編集", edit_student_student_test_score_path
