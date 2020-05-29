@@ -1,4 +1,13 @@
 .container
   .row
     .col-md-12
-        = @diary.study_time
+      | 勉強時間
+      = @diary.study_time
+      | 時間
+      br
+      | 解いた問題数
+      = @diary.solve_number
+      | 問
+      br
+      | 間違えた割合
+      = @diary.incorrect_rate

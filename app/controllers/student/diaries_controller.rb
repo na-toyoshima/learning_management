@@ -7,7 +7,7 @@ class Student::DiariesController < Student::Base
     @diary = Diary.new(diary_params)
     @diary.student_id = current_student.id
     @diary.save
-    redirect_to student_diary_path(@diary.id)
+    redirect_to student_student_diary_path(student_id: current_student.id, id:@diary.id)
   end
 
   def show

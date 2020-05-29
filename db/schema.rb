@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_25_162210) do
+ActiveRecord::Schema.define(version: 2020_05_29_102449) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "student_id"
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2020_05_25_162210) do
   create_table "score_reports", force: :cascade do |t|
     t.integer "grade", null: false
     t.integer "term", null: false
-    t.string "title", null: false
     t.integer "japanese", default: 0, null: false
     t.integer "math", default: 0, null: false
     t.integer "science", default: 0, null: false
@@ -98,6 +97,8 @@ ActiveRecord::Schema.define(version: 2020_05_25_162210) do
     t.integer "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "start_date"
+    t.date "end_date"
   end
 
   create_table "test_scores", force: :cascade do |t|
