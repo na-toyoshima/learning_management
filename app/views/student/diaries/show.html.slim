@@ -11,3 +11,17 @@
       br
       | 間違えた割合
       = @diary.incorrect_rate
+      br
+      |できるようになったこと・意識したこと
+      =@diary.can_body
+      br
+      |できなかったこと・難しかった問題
+      =@diary.cannot_body
+      br
+      |明日やること
+      =@diary.next_body
+      br
+      |自己評価
+      p id="star-rate-#{@diary.id}"
+      /星評価表示partial
+      == render partial: 'student/shared/rate_view', locals: {diary: @diary}

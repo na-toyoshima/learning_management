@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_102449) do
+ActiveRecord::Schema.define(version: 2020_05_30_093904) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "student_id"
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2020_05_29_102449) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", default: "", null: false
-    t.integer "image_id"
+    t.string "image_id"
     t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
