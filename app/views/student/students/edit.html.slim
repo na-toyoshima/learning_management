@@ -1,0 +1,16 @@
+.container
+  .row
+    .col-md-12
+      =form_with(model:[@student], url: student_student_path) do |f|
+        table
+          tr
+            td
+              |名前
+              =f.text_field :name
+          tr
+            td
+              |プロフィール画像
+              =f.attachment_field :image
+          tr
+            td
+              =f.submit "情報変更"

@@ -1,9 +1,9 @@
 .container
   .row
     .col-md-2
-      | 画像表示
+      = attachment_image_tag @student, :image, :size =>'170x140'
     .col-md-2
-      | ユーザーネーム
+      =@student.name
       br
       =link_to "生徒情報編集", edit_student_student_path
     .col-md-6
@@ -63,25 +63,23 @@
             td
               |日付
             td
-              |勉強時間
+              |勉強時間　　
             td
-              |解いた問題数
-            td
-              |集中度
+              |解いた問題数　　
             td
               |自己評価
             td
           -@diaries.each do |diary|
             tr
               td
-                =diary.created_at
+                =diary.created_at.strftime('%Y/%m/%d')
+                |　
               td
                 =diary.study_time
               td
                 =diary.solve_number
-              td
-                |集中度
-              td
-                |自己評価
+              td id="star-rate-#{diary.id}"
               td
                 =link_to "詳細へ", student_student_diary_path(student_id: @student.id, id:diary.id)
+              /星評価表示partial
+              == render partial: 'student/shared/rate_view', locals: {diary: diary}

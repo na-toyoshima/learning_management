@@ -18,6 +18,6 @@ class Student::DiariesController < Student::Base
 
   private
   def diary_params
-    params.require(:diary).permit(:study_time, :solve_number, :incorrect_rate, :can_body, :cannot_body, :next_body, :self_rating)
+    params.require(:diary).permit(:study_time, :solve_number, :incorrect_rate, :can_body, :cannot_body, :next_body, :rate)
   end
 end

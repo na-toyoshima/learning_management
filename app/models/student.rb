@@ -9,5 +9,6 @@ class Student < ApplicationRecord
         has_many :test_ranges, dependent: :destroy
         has_many :diaries, dependent: :destroy
         has_many :comments, dependent: :destroy
+        attachment :image
 
 end
