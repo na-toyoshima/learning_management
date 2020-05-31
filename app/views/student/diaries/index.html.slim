@@ -1,3 +1,33 @@
 .container
   .row
-    .
+    .col-md-5
+      |最近の勉強内容
+      br
+        table
+          tr
+            td
+              |日付
+            td
+              |勉強時間　　
+            td
+              |解いた問題数　　
+            td
+              |自己評価
+            td
+          -@diaries.each do |diary|
+            tr
+              td
+                =diary.created_at.strftime('%Y/%m/%d')
+                |　
+              td
+                =diary.study_time
+              td
+                =diary.solve_number
+              td id="star-rate-#{diary.id}"
+              td
+                =link_to "詳細へ", student_student_diary_path(student_id: @student.id, id:diary.id)
+              /星評価表示partial
+              == render partial: 'student/shared/rate_view', locals: {diary: diary}
+  .row
+    .col-md-offset-3.col-md-4
+      =link_to "詳細ページへ戻る", student_student_path(id:@student.id)
