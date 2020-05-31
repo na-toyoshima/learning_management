@@ -45,4 +45,4 @@
               =score.home_economics
           tr
             td
-              =link_to "テスト結果編集", edit_student_student_test_score_path
+              =link_to "テスト結果編集", edit_student_student_test_score_path(student_id:current_student.id, id:score.id)
