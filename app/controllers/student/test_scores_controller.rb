@@ -21,7 +21,7 @@ class Student::TestScoresController < Student::Base
   def update
     @score = TestScore.find(params[:id])
     @score.update(test_score_params)
-    redirect_to student_student_test_scores_path(student_id: current_student.id, id:@score.id)
+    redirect_to student_student_test_scores_path(student_id: current_student.id)
   end
 
   def index
