@@ -15,8 +15,8 @@ class Student::DiariesController < Student::Base
   end
 
   def index
-    student = Student.find(params[:student_id])
-    @diaries = student.diaries.order("created_at DESC")
+    @student = Student.find(params[:student_id])
+    @diaries = @student.diaries.order("created_at DESC")
   end
 
   private
