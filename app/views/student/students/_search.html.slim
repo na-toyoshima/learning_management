@@ -1,0 +1,8 @@
+.row
+  .col-md-offset-1
+    -students.each do |student|
+      =student.name
+      - if current_student.following?(student)
+        =link_to "フォローをやめる", student_unfollow_path(student.id), method: :post
+      -else
+        =link_to "フォローする", student_follow_path(student.id), method: :post

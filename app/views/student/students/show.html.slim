@@ -15,12 +15,18 @@
         br
         = nexts.next_body
     .col-md-2
-      | フォロー数　○
+      | フォロー数：
+      =@student.follower.count
+      |人
       br
-      | フォロワー数　○
+      | フォロワー数：
+      =@student.followed.count
+      |人
       br
       | フォロー承認待ち　○
+      |人
   .row
+    br
     .col-md-2.col-md-offset-1
       =link_to "勉強内容登録", new_student_student_diary_path(student_id: @student.id ), class:"btn btn-success"
     .col-md-2
@@ -63,7 +69,11 @@
                 <br>
 
       br
-      |ユーザー検索
+      |生徒名検索
+      br
+      =form_tag(student_search_path, method: :get) do
+        =text_field_tag 'search[content]'
+        =submit_tag "検索", class: "btn btn-default "
     .col-md-3
       b 最新のテスト範囲
       br

@@ -2,6 +2,7 @@
   .row
     .col-md-12
       -@test_scores.each do |score|
+        br
         |テスト名　
         =score.grade
         |年
@@ -46,3 +47,7 @@
           tr
             td
               =link_to "テスト結果編集", edit_student_student_test_score_path(student_id:current_student.id, id:score.id)
+
+  .row
+    .col-md-offset-2
+      =link_to "マイページへ戻る", student_student_path(current_student)

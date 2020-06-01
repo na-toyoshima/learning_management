@@ -1,3 +1,13 @@
 // Place all the styles related to the student/TestRanges controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table.range_new {
+  tr{
+    td{
+      padding: 50px;
+      width:50px;
+      height: 50px;
+    }
+  }
+}

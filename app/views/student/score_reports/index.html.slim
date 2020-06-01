@@ -2,6 +2,7 @@
   .row
     .col-md-12
       -@reports.each do |report|
+        br
         =report.grade
         |年
         =report.term
@@ -44,3 +45,6 @@
           tr
             td
               = link_to "内申点編集", edit_student_student_score_report_path(student_id: current_student.id, id:report.id)
+  .row
+    .col-md-offset-2
+      =link_to "マイページへ戻る", student_student_path(current_student)

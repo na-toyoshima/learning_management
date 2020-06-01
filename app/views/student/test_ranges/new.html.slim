@@ -1,6 +1,6 @@
 .container
   .row
-    .col-md-12
+    .col-md-7
       = form_with(model:[@test_range], url: student_student_test_ranges_path) do |f|
         table
           tr
@@ -13,42 +13,70 @@
             | テスト
           tr
             td
+              br
               | テスト開始日
               = f.date_field :start_date
               | 　〜　
               |テスト終了日
               = f.date_field :end_date
           br
-          tr
-            td
-              | 国語
-              = f.text_area :japanese
-              br
-              | 数学
-              = f.text_area :math
-              br
-              | 理科
-              = f.text_area :science
-              br
-              | 社会
-              = f.text_area :social
-              br
-              |英語
-              = f.text_area :english
-              br
-              |音楽
-              = f.text_area :music
-              br
-              |美術
-              = f.text_area :art
-              br
-              |保健体育
-              = f.text_area :p_e
-              br
-              |技術
-              = f.text_area :technical_course
-              br
-              |家庭科
-              = f.text_area :home_economics
-              br
-              = f.submit "テスト範囲登録"
+        .row
+          .col-md-offset-1.col-md-4
+            table.table.table-condensed
+              tr
+                td
+                  | 国語
+                td
+                  = f.text_area :japanese
+              tr
+                td
+                  | 数学
+                td
+                  = f.text_area :math
+              tr
+                td
+                  | 理科
+                td
+                  = f.text_area :science
+              tr
+                td
+                  | 社会
+                td
+                  = f.text_area :social
+              tr
+                td
+                  | 英語
+                td
+                  = f.text_area :english
+              tr
+                td
+                  | 音楽
+                td
+                  = f.text_area :music
+              tr
+                td
+                  | 美術
+                td
+                  = f.text_area :art
+              tr
+                td
+                  |保健体育
+                td
+                  = f.text_area :p_e
+              tr
+                td
+                  | 技術
+                td
+                  = f.text_area :technical_course
+              tr
+                td
+                  | 家庭科
+                td
+                  = f.text_area :home_economics
+                  br
+                    = f.submit "テスト範囲登録"
+  .row
+    .col-md-offset-2
+      =link_to "マイページへ戻る", student_student_path(current_student)
+    br
+    br
