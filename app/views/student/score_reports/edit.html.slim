@@ -1,5 +1,6 @@
 .container
-  .col-md-8
+  .row
+    .col-md-8
       = form_with(model:[@report], url: student_student_score_report_path) do |f|
         table
           tr
@@ -45,3 +46,7 @@
           tr
             td
               = f.submit "内申点結果編集"
+  .row
+    .col-md-offset-1
+      br
+      =link_to "マイページへ戻る", student_student_path(current_student)

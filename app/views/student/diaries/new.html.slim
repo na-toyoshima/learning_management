@@ -38,6 +38,15 @@
             td
               #star
                 = f.hidden_field :rate, id: :review_star
+            td
+              br
               = f.submit "勉強内容登録"
+  .row
+    .col-md-offset-7
+      br
+      br
+        =link_to "マイページへ戻る", student_student_path(current_student)
+
+
 /星評価登録用
 == render partial:'student/shared/rate_form'

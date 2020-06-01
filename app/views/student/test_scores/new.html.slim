@@ -48,7 +48,8 @@
           tr
             td
               = f.submit "テスト結果登録"
-              .row
+  .row
+    br
     .col-md-8
       = form_with(model:[@score_report], url: student_student_score_reports_path) do |f|
         table
@@ -95,3 +96,9 @@
           tr
             td
               = f.submit "内申点結果登録"
+  .row
+    .col-md-offset-1
+      br
+      =link_to "マイページへ戻る", student_student_path(current_student)
+    br
+    br
