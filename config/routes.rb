@@ -27,7 +27,9 @@ Rails.application.routes.draw do
     post 'follow/:id' => 'relationships#follow', as: 'follow'
     post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
     resources :students, only: [:show, :edit, :update] do
-      resources :diaries, only: [:show, :edit, :update, :index, :create, :new]
+      resources :diaries, only: [:show, :edit, :update, :index, :create, :new] do
+        resource :favorites, only:[:create, :destroy]
+      end
       resources :test_scores, only:[:show, :edit, :update, :index, :create, :new]
       resources :test_ranges, only:[:show, :edit, :update, :index, :create, :new]
       resources :score_reports, only:[:show, :edit, :update, :index, :create]

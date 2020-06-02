@@ -23,15 +23,16 @@ class Student < ApplicationRecord
           def follow(student_id)
             follower.create(followed_id: student_id)
           end
-
         # ユーザーのフォローを外す
           def unfollow(student_id)
             follower.find_by(followed_id: student_id).destroy
           end
-
-        # フォローしていればtrueを返す
+        # フォローしていればtrue
           def following?(student)
             following_student.include?(student)
           end
+
+          has_many :favorites, dependent: :destroy
+
 
 end

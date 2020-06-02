@@ -13,7 +13,7 @@
         =nexts.created_at.tomorrow.strftime('%m/%d')
         |にやること
         br
-        = nexts.next_body
+        = simple_format(nexts.next_body)
     .col-md-2
       | フォロー数：
       =@student.follower.count
@@ -27,7 +27,7 @@
       |人
   .row
     br
-    .col-md-2.col-md-offset-1
+    .col-md-2
       =link_to "勉強内容登録", new_student_student_diary_path(student_id: @student.id ), class:"btn btn-success"
     .col-md-2
       =link_to "テスト範囲登録", new_student_student_test_range_path(student_id: @student.id ), class:"btn btn-success"
@@ -36,16 +36,17 @@
   .row
     br
     .col-md-4
-      b テスト結果
+      b テスト結果　
+      = link_to"テスト結果一覧へ", student_student_test_scores_path(student_id:current_student.id), class:"btn btn-primary"
+      br
       br
       - @test_scores.each do |score|
-        br
           =score.grade
           |年
           =score.term
           |学期
           =score.title
-        table.table.table-bordered.table-condensed
+          table.table.table-bordered.table-condensed
             tr
               th 国語　
               th 数学　
@@ -66,7 +67,6 @@
               td
                 |　
                 =link_to "詳細", student_student_test_score_path(student_id:@student.id, id:score.id)
-                <br>
 
       br
       |生徒名検索
@@ -75,12 +75,13 @@
         =text_field_tag 'search[content]'
         =submit_tag "検索", class: "btn btn-default "
     .col-md-3
-      b 最新のテスト範囲
-      br
-      br
+      b 最新のテスト範囲　
+      -@ranges.each do |range|
+        =link_to "テスト範囲編集", edit_student_student_test_range_path(student_id:current_student.id, id:range.id), class:"btn btn-primary"
+        br
+        br
         /最新のテスト範囲表示用テーブル
-        -@ranges.each do |range|
-          ==render partial: 'range_table', locals: {range: range}
+        ==render partial: 'range_table', locals: {range: range}
     .col-md-5
       b 最近の勉強内容
       br

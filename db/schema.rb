@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_01_160249) do
+ActiveRecord::Schema.define(version: 2020_06_02_070114) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "student_id"
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 2020_06_01_160249) do
     t.text "next_body"
     t.float "rate", default: 0.0, null: false
     t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "diary_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
