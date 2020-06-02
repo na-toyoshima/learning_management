@@ -30,3 +30,7 @@ body,
 footer {
   margin-top: auto;
 }
+.table-no-border td{
+  border: none!important;
+  padding: 6px;
+}

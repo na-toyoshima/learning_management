@@ -6,7 +6,8 @@
       |名前：
       =@student.name
       br
-      =link_to "生徒情報編集", edit_student_student_path, class:"btn btn-primary"
+      -if @student == current_student
+        =link_to "生徒情報編集", edit_student_student_path, class:"btn btn-primary"
     .col-md-6
       /最新の日記作成日の翌日の日付を表示
       - @diary_next.each do |nexts|
@@ -23,50 +24,53 @@
       =@student.followed.count
       |人
       br
-      | フォロー承認待ち　○
-      |人
+      -if @student == current_student
+        | フォロー承認待ち　○
+        |人
   .row
     br
-    .col-md-2
-      =link_to "勉強内容登録", new_student_student_diary_path(student_id: @student.id ), class:"btn btn-success"
-    .col-md-2
-      =link_to "テスト範囲登録", new_student_student_test_range_path(student_id: @student.id ), class:"btn btn-success"
-    .col-md-2
-      =link_to "テスト結果登録", new_student_student_test_score_path(student_id: @student.id ), class:"btn btn-success"
+    -if @student == current_student
+      .col-md-2
+        =link_to "勉強内容登録", new_student_student_diary_path(student_id: @student.id ), class:"btn btn-success"
+      .col-md-2
+        =link_to "テスト範囲登録", new_student_student_test_range_path(student_id: @student.id ), class:"btn btn-success"
+      .col-md-2
+        =link_to "テスト結果登録", new_student_student_test_score_path(student_id: @student.id ), class:"btn btn-success"
   .row
     br
     .col-md-4
-      b テスト結果　
-      = link_to"テスト結果一覧へ", student_student_test_scores_path(student_id:current_student.id), class:"btn btn-primary"
-      br
-      br
-      - @test_scores.each do |score|
-          =score.grade
-          |年
-          =score.term
-          |学期
-          =score.title
-          table.table.table-bordered.table-condensed
-            tr
-              th 国語　
-              th 数学　
-              th 理科　
-              th 社会　
-              th 英語
-            tr
-              td
-                = score.japanese
-              td
-                = score.math
-              td
-                = score.science
-              td
-                = score.social
-              td
-                = score.english
-              td
-                |　
-                =link_to "詳細", student_student_test_score_path(student_id:@student.id, id:score.id)
+      -if @student == current_student
+        b テスト結果　
+        = link_to"テスト結果一覧へ", student_student_test_scores_path(student_id:current_student.id), class:"btn btn-primary"
+        br
+        br
+        - @test_scores.each do |score|
+            =score.grade
+            |年
+            =score.term
+            |学期
+            =score.title
+            table.table.table-bordered.table-condensed
+              tr
+                th 国語　
+                th 数学　
+                th 理科　
+                th 社会　
+                th 英語
+              tr
+                td
+                  = score.japanese
+                td
+                  = score.math
+                td
+                  = score.science
+                td
+                  = score.social
+                td
+                  = score.english
+                td
+                  |　
+                  =link_to "詳細", student_student_test_score_path(student_id:@student.id, id:score.id)
 
       br
       |生徒名検索

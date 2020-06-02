@@ -1,8 +1,33 @@
 .row
-  .col-md-offset-1
-    -students.each do |student|
-      =student.name
-      - if current_student.following?(student)
-        =link_to "フォローをやめる", student_unfollow_path(student.id), method: :post
-      -else
-        =link_to "フォローする", student_follow_path(student.id), method: :post
+  .col-md-10
+    table
+      tr
+        td
+          |画像
+        td
+          |生徒名
+        td
+          |累計学習時間
+        td
+          |解いた問題数
+        td
+        td
+        -students.each do |student|
+          tr
+            td
+              = attachment_image_tag student, :image, :size =>'80x100'
+            td
+              =student.name
+            td
+              =student.diaries.all.sum(:study_time)
+              |時間ぐらい
+            td
+              =student.diaries.all.sum(:solve_number)
+              |問ぐらい
+            td
+              =link_to "詳細ページへ", student_student_path(student)
+            td
+              - if current_student.following?(student)
+                =link_to "フォローをやめる", student_unfollow_path(student.id), method: :post
+              -else
+                =link_to "フォローする", student_follow_path(student.id), method: :post
