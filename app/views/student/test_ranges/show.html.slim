@@ -1,7 +1,7 @@
 .container
   .row
-    .col-md-12
-      table
+    .col-md-6
+      table.table.table-condenced
         tr
           td
             =@range.grade
@@ -9,52 +9,65 @@
             =@range.term
             |学期
             =@range.title
+          td
         tr
           td
             |テスト日程
-            = @range.start_date
+          td
+            = @range.start_date.strftime('%Y/%m/%d')
             |〜
-            = @range.end_date
+            = @range.end_date.strftime('%Y/%m/%d')
         tr
           td
             |国語
-            =@range.japanese
+          td
+            =simple_format(@range.japanese)
         tr
           td
             |数学
-            =@range.math
+          td
+            =simple_format(@range.math)
         tr
           td
             |理科
-            =@range.science
+          td
+            =simple_format(@range.science)
         tr
           td
             |社会
-            =@range.social
+          td
+            =simple_format(@range.social)
         tr
           td
             |英語
-            =@range.english
+          td
+            =simple_format(@range.english)
         tr
           td
             |音楽
-            =@range.music
+          td
+            =simple_format(@range.music)
         tr
           td
             |美術
-            =@range.art
+          td
+            =simple_format(@range.art)
         tr
           td
             |保健体育
-            =@range.p_e
+          td
+            =simple_format(@range.p_e)
         tr
           td
             |技術
-            =@range.technical_course
+          td
+            =simple_format(@range.technical_course)
         tr
           td
             |家庭科
-            =@range.home_economics
+          td
+            =simple_format(@range.home_economics)
         tr
+          td
           td
             =link_to "編集画面へ", edit_student_student_test_range_path

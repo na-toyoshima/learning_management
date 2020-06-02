@@ -8,23 +8,24 @@
         |学期
         =@score.title
         table
-          tr
-            td 国語　　
-            td 数学　　
-            td 理科　　
-            td 社会　　
-            td 英語　　
-          tr
-            td
-              =@score.japanese
-            td
-              =@score.math
-            td
-              =@score.science
-            td
-              =@score.social
-            td
-              =@score.english
+          br
+            tr
+              td 国語　　
+              td 数学　　
+              td 理科　　
+              td 社会　　
+              td 英語　　
+            tr
+              td
+                =@score.japanese
+              td
+                =@score.math
+              td
+                =@score.science
+              td
+                =@score.social
+              td
+                =@score.english
           tr
             td 音楽　　
             td 美術　　
@@ -42,6 +43,11 @@
               =@score.technical_course
             td
               =@score.home_economics
-          tr
-            td
-              =link_to "テスト結果編集", edit_student_student_test_score_path
+  .row
+    .col-md-6
+      br
+        =link_to "テスト結果編集", edit_student_student_test_score_path
+  .row
+    .col-md-6
+      br
+      =link_to "マイページへ戻る", student_student_path(current_student)

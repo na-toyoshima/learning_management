@@ -1,0 +1,10 @@
+-if diary.favorited_by?(current_student)
+  =link_to student_student_diary_favorites_path(student_id:student.id, diary_id:diary.id), method: :delete, remote: true do
+    i class="fa fa-heart" aria-hidden="true" style="color: red;"
+    |❤︎
+    =diary.favorites.count
+-else
+  =link_to student_student_diary_favorites_path(student_id:student.id, diary_id:diary.id), method: :post, remote: true do
+    i class="fa fa-heart-o" aria-hidden="true"
+    |♡
+    =diary.favorites.count

@@ -4,7 +4,7 @@
       = form_with(model:[@score], url: student_student_test_score_path) do |f|
         table
           tr
-              | テスト名
+              | テスト名　
               = f.text_field :grade
               | 年
               = f.text_field :term
@@ -47,4 +47,11 @@
               =f.text_field :home_economics
           tr
             td
+              br
               = f.submit "テスト結果編集"
+  .row
+    .col-md-6
+    br
+      =link_to "テスト結果詳細に戻る", student_student_test_score_path(student_id:current_student.id, id:@score.id)
+      br
+      =link_to "マイページへ戻る", student_student_path(current_student)
