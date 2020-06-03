@@ -25,7 +25,8 @@
       |人
       br
       -if @student == current_student
-        | フォロー承認待ち　○
+        | フォロー承認待ち：
+        =link_to @student.follow_requests.count, new_student_student_diary_path(student_id: @student.id )
         |人
   .row
     br

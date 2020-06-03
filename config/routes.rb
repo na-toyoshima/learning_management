@@ -13,14 +13,14 @@ Rails.application.routes.draw do
   }
 
   namespace :parent do
+    root to: 'parents#show'
     get '/search' => 'search#search'
-    post 'follow/:id' => 'relationships#follow', as: 'follow'
-    post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
     resource :parents, only: [:show]
     resources :students, only: [:show] do
       resources :test_scores, only: [:show]
       resources :test_ranges, only: [:show, :index]
       resources :diaries, only: [:index, :show]
+      resource :follow_requests, only:[:create, :destroy]
     end
   end
 

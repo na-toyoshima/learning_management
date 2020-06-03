@@ -27,7 +27,7 @@
             td
               =link_to "詳細ページへ", parent_student_path(student)
             td
-              / - if current_parent.following?(student)
-                =link_to "フォローをやめる", parent_unfollow_path(student.id), method: :post
-              / -else
-                =link_to "フォローする", parent_follow_path(student.id), method: :post
+              - if current_parent.already_requested?(student)
+                =button_to "フォローリクエスト取消", parent_student_follow_requests_path(student_id:student.id), method: :delete
+              -else
+                =button_to "フォローリクエスト送信", parent_student_follow_requests_path(student_id:student.id), method: :post
