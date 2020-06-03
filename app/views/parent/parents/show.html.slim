@@ -1,1 +1,15 @@
-= link_to "ログアウト", destroy_parent_session_path, method: :delete
+.container
+  .row
+    .col-md-offset-1.col-md-2
+      =current_parent.name
+      |さんのページ
+  .row
+    .col-md-offset-1.col-md-2
+      |生徒名検索
+      br
+      =form_tag(parent_search_path, method: :get) do
+        =text_field_tag 'search[content]'
+        =submit_tag "検索", class: "btn btn-default "
+    .col-md-3
+      br
+      |フォロー一覧
