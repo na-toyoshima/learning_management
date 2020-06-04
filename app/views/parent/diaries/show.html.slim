@@ -1,2 +1,30 @@
-h1 Parent::Diaries#show
-p Find me in app/views/parent/diaries/show.html.slim
+.container
+  .row
+    .col-md-12
+      | 勉強時間
+      = @diary.study_time
+      | 時間
+      br
+      | 解いた問題数
+      = @diary.solve_number
+      | 問
+      br
+      | 間違えた割合
+      = @diary.incorrect_rate
+      br
+      |できるようになったこと・意識したこと
+      =@diary.can_body
+      br
+      |できなかったこと・難しかった問題
+      =@diary.cannot_body
+      br
+      |明日やること
+      =@diary.next_body
+      br
+      |自己評価
+      p id="star-rate-#{@diary.id}"
+      /星評価表示partial
+      == render partial: 'student/shared/rate_view', locals: {diary: @diary}
+  .row
+    .col-md-4
+      =link_to "生徒詳細ページへ戻る", parent_student_path(id: @student.id)

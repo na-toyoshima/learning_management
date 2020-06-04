@@ -1,0 +1,21 @@
+.container
+  .row
+    .col-md-5
+      |保護者からのフォローリクエスト一覧<BR><BR>
+      table.table.table-condensed
+        tr
+          td
+            |名前
+          td
+          td
+        -@requests.each do |request|
+          tr
+            td
+              =request.parent.name
+            td
+              = link_to "フォロー承認", student_student_allow_path(student_id:current_student.id, id:request.id), method: :post
+            td
+              = link_to "フォロー拒否", student_student_follow_request_path(student_id:current_student.id, id:request.id), method: :delete
+  .row
+    .col-md-5
+      =link_to "マイページに戻る", student_student_path(current_student)

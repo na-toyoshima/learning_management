@@ -17,9 +17,10 @@ Rails.application.routes.draw do
     get '/search' => 'search#search'
     resource :parents, only: [:show]
     resources :students, only: [:show] do
-      resources :test_scores, only: [:show]
+      resources :test_scores, only: [:show,:index]
       resources :test_ranges, only: [:show, :index]
       resources :diaries, only: [:index, :show]
+      resources :score_reports, only:[:show, :index,]
       resource :follow_requests, only:[:create, :destroy]
     end
   end
@@ -37,6 +38,9 @@ Rails.application.routes.draw do
       resources :test_scores, only:[:show, :edit, :update, :index, :create, :new]
       resources :test_ranges, only:[:show, :edit, :update, :index, :create, :new]
       resources :score_reports, only:[:show, :edit, :update, :index, :create]
+      resources :parent_follows, only:[:destroy, :show, :index]
+      post '/follow_requests/:id' => 'follow_requests#allow', as: 'allow'
+      resources :follow_requests, only:[:index, :show, :destroy]
     end
   end
 

@@ -34,6 +34,7 @@ class Student < ApplicationRecord
             following_student.include?(student)
           end
         # フォローリクエスト機能
-          has_many :follow_requests,dependent: :destroy
+          has_many :follow_requests, dependent: :destroy
+          has_many :parent_follows, dependent: :destroy
 
 end

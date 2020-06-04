@@ -1,4 +1,5 @@
 header
   | 保護者側　header
   = link_to "ログアウト", destroy_student_session_path, method: :delete
-
+  |　　
+  = link_to "マイページへ", parent_parents_path(current_parent)

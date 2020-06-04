@@ -1,4 +1,4 @@
-class Parent::SearchController < ApplicationController
+class Parent::SearchController < Parent::Base
   def search
     @content = params["search"]["content"]
     @records = search_for(@content)

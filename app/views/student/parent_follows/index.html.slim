@@ -1,0 +1,14 @@
+.container
+  .row
+    .col-md-3.col-md-offset-1
+      table.table.table-condensed
+        tr
+          td
+            |名前
+          td
+        -@followers.each do |follow|
+          tr
+            td
+              =follow.parent.name
+            td
+              = link_to "フォロー解除", student_student_parent_follow_path(student_id:current_student.id, id:follow.id), method: :delete

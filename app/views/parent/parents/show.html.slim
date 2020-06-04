@@ -13,3 +13,6 @@
     .col-md-3
       br
       |フォロー一覧
+      br
+      -@followings.each do |following|
+        = link_to following.student.name, parent_student_path(id: following.student.id)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_090026) do
+ActiveRecord::Schema.define(version: 2020_06_04_070343) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "student_id"
@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 2020_06_03_090026) do
   create_table "follow_requests", force: :cascade do |t|
     t.integer "parent_id"
     t.integer "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parent_follows", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
