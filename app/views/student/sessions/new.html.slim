@@ -1,18 +1,25 @@
-h2
-  | Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :name, "名前"
-    br
-    = f.text_field :name, autofocus: true, autocomplete: "名前"
-  .field
-    = f.label :password, "パスワード"
-    br
-    = f.password_field :password, autocomplete: "パスワード"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.container
+  .row
+    .col-md-offset-1.col-md-7
+      | 生徒ログイン<BR><BR>
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        table.table.table-no-border.table-condensed
+          tr
+            td
+              = f.label :name, "名前"
+            td
+              = f.text_field :name, autofocus: true, autocomplete: "名前"
+          tr
+            td
+              = f.label :password, "パスワード"
+            td
+              = f.password_field :password, autocomplete: "パスワード"
+          tr
+            - if devise_mapping.rememberable?
+              td
+                = f.check_box :remember_me
+                = f.label :"ログインを記憶する"
+          tr
+            td
+            td
+              = f.submit "ログイン", class:"btn btn-success"

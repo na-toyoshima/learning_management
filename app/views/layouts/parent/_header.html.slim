@@ -15,15 +15,16 @@ header
           -if parent_signed_in?
             li
               =link_to "保護者マイページへ", parent_root_path
-            / li
-            /   =link_to "勉強内容登録", new_student_student_diary_path(student_id:current_student.id)
-            / li
-            /   =link_to "テスト範囲登録", new_student_student_test_range_path(student_id:current_student.id)
-            / li
-            /   =link_to "テスト結果登録", new_student_student_test_score_path(student_id:current_student.id)
-            / li
-            /   =link_to "テスト結果一覧", student_student_test_scores_path(student_id:current_student.id)
-            / li
-            /   =link_to "内申点一覧", student_student_score_reports_path(student_id:current_student.id)
             li
               = link_to "ログアウト", destroy_parent_session_path, method: :delete
+          -else
+            li
+              =link_to "このサイトについて", student_about_path
+            li
+              =link_to "生徒新規登録", new_student_registration_path
+            li
+              =link_to "生徒ログイン", new_student_session_path
+            li
+              =link_to "保護者新規登録", new_parent_registration_path
+            li
+              =link_to "保護者ログイン", new_parent_session_path

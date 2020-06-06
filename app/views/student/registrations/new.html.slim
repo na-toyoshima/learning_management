@@ -1,10 +1,10 @@
 .container
   .row
-    .col-md-offset-1.col-md-10
-      | 新規登録
+    .col-md-offset-1.col-md-7
+      | 生徒新規登録<BR><BR>
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = render "devise/shared/error_messages", resource: resource
-        table.table.table-bordered.table-condensed
+        table.table.table-no-border.table-condensed
             tr
               td
                 = f.label :name, "名前"
@@ -28,5 +28,5 @@
             tr
               td
               td
-                = f.submit "Sign up"
-      = render "devise/shared/links"
+                br
+                = f.submit "新規登録", class:"btn btn-success"

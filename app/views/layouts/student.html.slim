@@ -9,6 +9,6 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     div id="wrapper"
-      = render 'layouts/student/header'
+      == render 'layouts/student/header'
       = yield
-      = render 'layouts/student/footer'
+      == render 'layouts/student/footer'
