@@ -1,18 +1,16 @@
 .container
   .row
-    .col-md-6
+    .col-md-12
       br
       =link_to "生徒マイページへ戻る", parent_student_path(id: @student.id)
   .row
-  -@test_scores.each do |score|
+  -@reports.each do |report|
     .col-md-4
         br
-        |テスト名　
-        =score.grade
+        =report.grade
         |年
-        =score.term
-        |学期
-        =score.title
+        =report.term
+        |学期　内申点
         table.table.table-bordered
           tr
             td 国語
@@ -22,15 +20,15 @@
             td 英語
           tr
             td
-              =score.japanese
+              =report.japanese
             td
-              =score.math
+              =report.math
             td
-              =score.science
+              =report.science
             td
-              =score.social
+              =report.social
             td
-              =score.english
+              =report.english
           tr
             td 音楽
             td 美術
@@ -39,12 +37,12 @@
             td 家庭
           tr
             td
-              =score.music
+              =report.music
             td
-              =score.art
+              =report.art
             td
-              =score.p_e
+              =report.p_e
             td
-              =score.technical_course
+              =report.technical_course
             td
-              =score.home_economics
+              =report.home_economics

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resources :test_scores, only: [:show,:index]
       resources :test_ranges, only: [:show, :index]
       resources :diaries, only: [:index, :show]
-      resources :score_reports, only:[:show, :index,]
+      resources :score_reports, only:[:index]
       resource :follow_requests, only:[:create, :destroy]
     end
   end
@@ -31,10 +31,12 @@ Rails.application.routes.draw do
     get '/search' => 'search#search'
     post 'follow/:id' => 'relationships#follow', as: 'follow'
     post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
-    resources :students, only: [:show, :edit, :update] do
+        resources :students, only: [:show, :edit, :update] do
       resources :diaries, only: [:show, :edit, :update, :index, :create, :new] do
         resource :favorites, only:[:create, :destroy]
       end
+      get '/followers' => 'relationships#follower', as: 'follower'
+      get '/followeds' => 'relationships#followed', as: 'followed'
       resources :test_scores, only:[:show, :edit, :update, :index, :create, :new]
       resources :test_ranges, only:[:show, :edit, :update, :index, :create, :new]
       resources :score_reports, only:[:show, :edit, :update, :index, :create]

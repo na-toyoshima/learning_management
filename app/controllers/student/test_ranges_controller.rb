@@ -1,4 +1,5 @@
 class Student::TestRangesController < Student::Base
+  before_action :correct_student, only: [:edit, :update]
   def new
     @test_range = TestRange.new
   end
@@ -26,5 +27,13 @@ class Student::TestRangesController < Student::Base
 
   def test_range_params
     params.require(:test_range).permit(:grade, :term, :title, :japanese, :math, :science, :social, :english, :p_e, :art, :music, :technical_course, :home_economics, :start_date, :end_date)
+  end
+
+  private
+  def correct_student
+    range = TestRange.find(params[:id])
+    unless range.student_id == current_student.id
+      redirect_to student_root_path(current_student)
+    end
   end
 end

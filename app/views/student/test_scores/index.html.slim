@@ -6,48 +6,48 @@
   .row
     .col-md-12
       -@test_scores.each do |score|
-        br
-        |テスト名　
-        =score.grade
-        |年
-        =score.term
-        |学期
-        =score.title
-        table
-          tr
-            td 国語　　
-            td 数学　　
-            td 理科　　
-            td 社会　　
-            td 英語　　
-          tr
-            td
-              =score.japanese
-            td
-              =score.math
-            td
-              =score.science
-            td
-              =score.social
-            td
-              =score.english
-          tr
-            td 音楽　　
-            td 美術　　
-            td 保健体育　　
-            td 技術　　
-            td 家庭科　　
-          tr
-            td
-              =score.music
-            td
-              =score.art
-            td
-              =score.p_e
-            td
-              =score.technical_course
-            td
-              =score.home_economics
-          tr
-            td
-              =link_to "テスト結果編集", edit_student_student_test_score_path(student_id:current_student.id, id:score.id)
+        .col-md-4
+          br
+          |テスト名　
+          =score.grade
+          |年
+          =score.term
+          |学期
+          =score.title
+          table.table.table-bordered
+            tr
+              td 国語
+              td 数学
+              td 理科
+              td 社会
+              td 英語
+            tr
+              td
+                =score.japanese
+              td
+                =score.math
+              td
+                =score.science
+              td
+                =score.social
+              td
+                =score.english
+            tr
+              td 音楽
+              td 美術
+              td 保体
+              td 技術
+              td 家庭
+            tr
+              td
+                =score.music
+              td
+                =score.art
+              td
+                =score.p_e
+              td
+                =score.technical_course
+              td
+                =score.home_economics
+          .row
+            =link_to "#{score.grade}年#{score.term}学期#{score.title}結果編集", edit_student_student_test_score_path(student_id:current_student.id, id:score.id)

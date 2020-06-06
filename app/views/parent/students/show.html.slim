@@ -49,7 +49,7 @@
       br
       br
       b 内申点(直近3件)　
-      = link_to"内申点一覧へ", parent_student_test_scores_path(student_id:@student.id), class:"btn btn-primary"
+      = link_to"内申点一覧へ", parent_student_score_reports_path(student_id:@student.id), class:"btn btn-primary"
       br
       br
       - @score_reports.each do |report|
@@ -75,8 +75,6 @@
                 = report.social
               td
                 = report.english
-              td
-                =link_to "詳細", parent_student_score_report_path(student_id:@student.id, id:report.id)
     .col-md-4
       b 最新のテスト範囲　
       -@ranges.each do |range|

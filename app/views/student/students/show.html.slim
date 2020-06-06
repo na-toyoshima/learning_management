@@ -17,11 +17,11 @@
         = simple_format(nexts.next_body)
     .col-md-2
       | フォロー数：
-      =@student.follower.count
+      =link_to @student.follower.count, student_student_follower_path(student_id:@student.id)
       |人
       br
       | フォロワー数：
-      =@student.followed.count
+      =link_to @student.followed.count, student_student_followed_path(student_id:@student.id)
       |人
       br
       -if @student == current_student
