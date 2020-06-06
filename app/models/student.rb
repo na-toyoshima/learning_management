@@ -8,7 +8,7 @@ class Student < ApplicationRecord
         has_many :score_reports, dependent: :destroy
         has_many :test_ranges, dependent: :destroy
         has_many :diaries, dependent: :destroy
-        has_many :comments, dependent: :destroy
+        has_many :favorites, dependent: :destroy
         attachment :image
         #以下フォロー関係の記述
         has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -23,16 +23,18 @@ class Student < ApplicationRecord
           def follow(student_id)
             follower.create(followed_id: student_id)
           end
+
         # ユーザーのフォローを外す
           def unfollow(student_id)
             follower.find_by(followed_id: student_id).destroy
           end
-        # フォローしていればtrue
+
+        # フォローしていればtrueを返す
           def following?(student)
             following_student.include?(student)
           end
-
-          has_many :favorites, dependent: :destroy
-
+        # フォローリクエスト機能
+          has_many :follow_requests, dependent: :destroy
+          has_many :parent_follows, dependent: :destroy
 
 end

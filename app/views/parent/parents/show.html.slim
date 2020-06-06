@@ -1,15 +1,59 @@
 .container
   .row
-    .col-md-offset-1.col-md-2
+    .col-md-2
       =current_parent.name
-      |さんのページ
+      |さんのページ<BR><BR>
   .row
     .col-md-offset-1.col-md-2
       |生徒名検索
       br
+      br
       =form_tag(parent_search_path, method: :get) do
         =text_field_tag 'search[content]'
+        br
+        br
         =submit_tag "検索", class: "btn btn-default "
     .col-md-3
+      |フォロー生徒一覧
       br
-      |フォロー一覧
+      br
+      -@followings.each do |following|
+        = link_to "#{following.student.name}さんのページへ", parent_student_path(id: following.student.id)
+        br
+        br
+    .col-md-6
+      b 最近の勉強内容
+      br
+      br
+        table.table.table-condensed
+          tr
+            td
+              |生徒名
+            td
+              |日付
+            td
+              |勉強時間　
+            td
+              |解いた問題　
+            td
+              |自己評価
+            td
+          -@diaries.each do |diary|
+            tr
+              td
+                =diary.student.name
+              td
+                =diary.created_at.strftime('%m/%d')
+                |　
+              td
+                =diary.study_time
+                |時間ぐらい　　
+              td
+                =diary.solve_number
+                |問ぐらい
+              td id="star-rate-#{diary.id}"
+              td
+                |　
+                =link_to "詳細へ", parent_student_diary_path(student_id: diary.student.id, id:diary.id)
+              /星評価表示partial
+              == render partial: 'student/shared/rate_view', locals: {diary: diary}

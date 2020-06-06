@@ -1,20 +1,20 @@
 .container
   .row
-    .col-md-12
+    .col-md-4
         |テスト名　
         =@score.grade
         |年
         =@score.term
         |学期
         =@score.title
-        table
+        table.table.table-bordered
           br
             tr
-              td 国語　　
-              td 数学　　
-              td 理科　　
-              td 社会　　
-              td 英語　　
+              td 国語
+              td 数学
+              td 理科
+              td 社会
+              td 英語
             tr
               td
                 =@score.japanese
@@ -27,11 +27,11 @@
               td
                 =@score.english
           tr
-            td 音楽　　
-            td 美術　　
-            td 保健体育　　
-            td 技術　　
-            td 家庭科　　
+            td 音楽
+            td 美術
+            td 保体
+            td 技術
+            td 家庭
           tr
             td
               =@score.music

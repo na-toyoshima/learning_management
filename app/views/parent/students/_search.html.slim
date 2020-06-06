@@ -1,6 +1,4 @@
-.row
-  .col-md-10
-    table
+table.table.table-condensed
       tr
         td
           |画像
@@ -25,9 +23,14 @@
               =student.diaries.all.sum(:solve_number)
               |問ぐらい
             td
-              =link_to "詳細ページへ", parent_student_path(student)
+              - if current_parent.already_followed?(student)
+                =link_to "詳細ページへ", parent_student_path(student)
+              - else
+                |フォロー承認後に確認できます
             td
-              / - if current_parent.following?(student)
-                =link_to "フォローをやめる", parent_unfollow_path(student.id), method: :post
-              / -else
-                =link_to "フォローする", parent_follow_path(student.id), method: :post
+              - if current_parent.already_followed?(student)
+                |すでにフォロー済みです
+              - elsif current_parent.already_requested?(student)
+                =link_to "フォローリクエスト取消", parent_student_follow_requests_path(student_id:student.id), method: :delete
+              -else
+                =link_to "フォローリクエスト送信", parent_student_follow_requests_path(student_id:student.id), method: :post

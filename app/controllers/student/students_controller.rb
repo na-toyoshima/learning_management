@@ -1,4 +1,6 @@
 class Student::StudentsController < Student::Base
+  before_action :correct_student, only: [:edit, :update]
+
   def show
     @student = Student.find(params[:id])
     @test_scores = @student.test_scores.order("created_at DESC").limit(3)
@@ -21,5 +23,10 @@ class Student::StudentsController < Student::Base
   def student_params
     params.require(:student).permit(:name,:image)
   end
-
+  def correct_student
+    student = Student.find(params[:id])
+    unless student.student_id == current_student.id
+      redirect_to student_root_path(current_student)
+    end
+  end
 end

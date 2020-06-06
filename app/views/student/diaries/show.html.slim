@@ -1,27 +1,48 @@
 .container
   .row
-    .col-md-12
-      | 勉強時間
-      = @diary.study_time
-      | 時間
-      br
-      | 解いた問題数
-      = @diary.solve_number
-      | 問
-      br
-      | 間違えた割合
-      = @diary.incorrect_rate
-      br
-      |できるようになったこと・意識したこと
-      =@diary.can_body
-      br
-      |できなかったこと・難しかった問題
-      =@diary.cannot_body
-      br
-      |明日やること
-      =@diary.next_body
-      br
-      |自己評価
-      p id="star-rate-#{@diary.id}"
+    .col-md-8
+      table.table.table-condensed
+        tr
+          td
+            | 勉強時間
+          td
+            = @diary.study_time
+            | 時間ぐらい
+        tr
+          td
+            | 解いた問題数
+          td
+            = @diary.solve_number
+            | 問ぐらい
+        tr
+          td
+            | 間違えた割合
+          td
+            = @diary.incorrect_rate
+            |割ぐらい
+        tr
+          td
+            |できるようになったこと<BR>
+            |意識したこと
+          td
+            =simple_format(@diary.can_body)
+        tr
+          td
+            |できなかったこと<BR>
+            |難しかった問題
+          td
+            =simple_format(@diary.cannot_body)
+        tr
+          td
+            |明日やること
+          td
+            =simple_format(@diary.next_body)
+        tr
+          td
+            |自己評価
+          td id="star-rate-#{@diary.id}"
       /星評価表示partial
       == render partial: 'student/shared/rate_view', locals: {diary: @diary}
+  .row
+    .col-md-4
+      =link_to "マイページへ戻る", student_student_path(current_student)
