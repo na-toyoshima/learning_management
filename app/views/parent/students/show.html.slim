@@ -14,6 +14,14 @@
         br
         = simple_format(nexts.next_body)
   .row
+    .col-md-offset-7.col-md-5
+      |累計勉強時間：
+      =@student.diaries.all.sum(:study_time)
+      |時間ぐらい　　
+      |今まで解いた問題数：
+      =@student.diaries.all.sum(:solve_number)
+      |問ぐらい
+  .row
     br
     .col-md-3
       b テスト結果(直近3件)　
@@ -76,7 +84,7 @@
               td
                 = report.english
     .col-md-4
-      b 最新のテスト範囲　
+      b 最新のテスト範囲　<BR><BR>
       -@ranges.each do |range|
         /最新のテスト範囲表示用テーブル
         ==render partial: 'student/students/range_table', locals: {range: range}

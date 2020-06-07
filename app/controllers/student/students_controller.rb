@@ -25,7 +25,7 @@ class Student::StudentsController < Student::Base
   end
   def correct_student
     student = Student.find(params[:id])
-    unless student.student_id == current_student.id
+    unless student.id == current_student.id
       redirect_to student_root_path(current_student)
     end
   end

@@ -1,82 +1,90 @@
 .container
-  .row
-    .col-md-7
-      = form_with(model:[@test_range], url: student_student_test_ranges_path) do |f|
-        table
-          tr
-            | テスト名
-            = f.text_field :grade
-            | 年
-            = f.text_field :term
-            | 学期
-            = f.text_field :title
-            | テスト
+  = form_with(model:[@test_range], url: student_student_test_ranges_path) do |f|
+    .row
+      .col-md-7
+          table
+            tr
+              |テスト範囲登録画面
+              br
+              br
+            tr
+              | テスト名
+              = f.text_field :grade
+              | 年
+              = f.text_field :term
+              | 学期
+              = f.text_field :title
+              | テスト
+            tr
+              td
+                br
+                | テスト開始日
+                = f.date_field :start_date
+                | 　〜　
+                |テスト終了日
+                = f.date_field :end_date
+            br
+    .row
+      br
+      br
+      .col-md-offset-1.col-md-5
+        table.table.table-condensed
           tr
             td
+              | 国語
+            td
+              = f.text_area :japanese,size:'40x3'
+          tr
+            td
+              | 数学
+            td
+              = f.text_area :math,size:'40x3'
+          tr
+            td
+              | 理科
+            td
+              = f.text_area :science,size:'40x3'
+          tr
+            td
+              | 社会
+            td
+              = f.text_area :social,size:'40x3'
+          tr
+            td
+              | 英語
+            td
+              = f.text_area :english,size:'40x3'
+      .col-md-6
+        table.table.table-condensed
+          tr
+            td
+              | 音楽
+            td
+              = f.text_area :music,size:'40x3'
+          tr
+            td
+              | 美術
+            td
+              = f.text_area :art,size:'40x3'
+          tr
+            td
+              |保健体育
+            td
+              = f.text_area :p_e,size:'40x3'
+          tr
+            td
+              | 技術
+            td
+              = f.text_area :technical_course,size:'40x3'
+          tr
+            td
+              | 家庭科
+            td
+              = f.text_area :home_economics,size:'40x3'
               br
-              | テスト開始日
-              = f.date_field :start_date
-              | 　〜　
-              |テスト終了日
-              = f.date_field :end_date
-          br
-        .row
-          .col-md-offset-1.col-md-6
-            table.table.table-condensed
-              tr
-                td
-                  | 国語
-                td
-                  = f.text_area :japanese
-              tr
-                td
-                  | 数学
-                td
-                  = f.text_area :math
-              tr
-                td
-                  | 理科
-                td
-                  = f.text_area :science
-              tr
-                td
-                  | 社会
-                td
-                  = f.text_area :social
-              tr
-                td
-                  | 英語
-                td
-                  = f.text_area :english
-              tr
-                td
-                  | 音楽
-                td
-                  = f.text_area :music
-              tr
-                td
-                  | 美術
-                td
-                  = f.text_area :art
-              tr
-                td
-                  |保健体育
-                td
-                  = f.text_area :p_e
-              tr
-                td
-                  | 技術
-                td
-                  = f.text_area :technical_course
-              tr
-                td
-                  | 家庭科
-                td
-                  = f.text_area :home_economics
-                  br
-                    = f.submit "テスト範囲登録"
-  .row
-    .col-md-offset-2
-      =link_to "マイページへ戻る", student_student_path(current_student)
-    br
-    br
+                = f.submit "テスト範囲登録"
+    .row
+      .col-md-offset-2
+        =link_to "マイページへ戻る", student_student_path(current_student)
+      br
+      br

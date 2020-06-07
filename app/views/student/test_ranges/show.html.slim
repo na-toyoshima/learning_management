@@ -1,15 +1,13 @@
 .container
   .row
-    .col-md-6
+    .col-md-8
       table.table.table-condenced
-        tr
-          td
-            =@range.grade
-            |年
-            =@range.term
-            |学期
-            =@range.title
-          td
+        =@range.grade
+        |年
+        =@range.term
+        |学期
+        =@range.title
+        <BR><BR>
         tr
           td
             |テスト日程

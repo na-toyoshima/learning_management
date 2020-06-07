@@ -1,8 +1,8 @@
 .container
   .row
-    .col-md-offset-2.col-md-8
+    .col-md-offset-1.col-md-10
       = form_with(model:[@diary], url: student_student_diaries_path) do |f|
-        table
+        table.table.table-condensed
           tr
             th 今日の勉強時間
             td
@@ -24,25 +24,29 @@
           tr
             th 今日できるようになった問題・意識したこと
             td
-              = f.text_area :can_body
+              |　　
+              = f.text_area :can_body,size:'50x5'
           tr
             th 今日できなかったこと・難しかった問題
             td
-              = f.text_area :cannot_body
+              |　　
+              = f.text_area :cannot_body,size:'50x5'
           tr
             th 明日やること・意識すること
             td
-              = f.text_area :next_body
+              |　　
+              = f.text_area :next_body,size:'50x5'
           tr
             th 自己評価
             td
               #star
+                |　　
                 = f.hidden_field :rate, id: :review_star
             td
               br
               = f.submit "勉強内容登録"
   .row
-    .col-md-offset-7
+    .col-md-offset-10
       br
       br
         =link_to "マイページへ戻る", student_student_path(current_student)

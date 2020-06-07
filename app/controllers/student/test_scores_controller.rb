@@ -40,4 +40,5 @@ private
     unless score.student_id == current_student.id
       redirect_to student_root_path(current_student)
     end
+  end
 end

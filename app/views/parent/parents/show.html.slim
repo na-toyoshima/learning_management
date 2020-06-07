@@ -17,10 +17,13 @@
       |フォロー生徒一覧
       br
       br
-      -@followings.each do |following|
-        = link_to "#{following.student.name}さんのページへ", parent_student_path(id: following.student.id)
-        br
-        br
+      -if current_parent.parent_follows.empty?
+        |左の検索フォームからお子様を検索し、<BR>フォローしてください。
+      -else
+        -@followings.each do |following|
+          = link_to "#{following.student.name}さんのページへ", parent_student_path(id: following.student.id)
+          br
+          br
     .col-md-6
       b 最近の勉強内容
       br
