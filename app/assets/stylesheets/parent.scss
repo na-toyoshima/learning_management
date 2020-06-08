@@ -17,9 +17,20 @@
 @import "bootstrap";
 
 header{
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
-footer{
-  margin-top: 100px;
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}
+.table-no-border td{
+  border: none!important;
+  padding: 6px;
 }

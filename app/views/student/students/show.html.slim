@@ -1,51 +1,134 @@
 .container
   .row
-    .col-md-2
-      | 画像表示
-    .col-md-2
-      | ユーザーネーム
+    .table-responsive
+      .col-md-2
+        = attachment_image_tag @student, :image, :size =>'140x110',fallback: 'no_image.jpg'
+      .col-md-3
+        |名前：
+        =@student.name
+        |　
+        -if @student == current_student
+          =link_to "生徒情報編集", edit_student_student_path, class:"btn btn-primary"
+      .col-md-5
+        /最新の日記作成日の翌日の日付を表示
+        - @diary_next.each do |nexts|
+          =nexts.created_at.tomorrow.strftime('%m/%d')
+          |にやること
+          br
+          = simple_format(nexts.next_body)
+      .col-md-2
+        | フォロー数：
+        =link_to @student.follower.count, student_student_follower_path(student_id:@student.id)
+        |人
+        br
+        | フォロワー数：
+        =link_to @student.followed.count, student_student_followed_path(student_id:@student.id)
+        |人
+        br
+        -if @student == current_student
+          |保護者フォロワー：
+          =link_to @student.parent_follows.count, student_student_parent_follows_path(student_id: @student.id )
+          |人
+          br
+          | フォロー承認待ち：
+          =link_to @student.follow_requests.count, student_student_follow_requests_path(student_id: @student.id )
+          |人
+    .row
       br
-      =link_to "生徒情報編集", edit_student_student_path
-    .col-md-6
-      | 今日やることの表示
-    .col-md-2
-      | フォロー数　○
+      -if @student == current_student
+        .col-md-2
+          =link_to "勉強内容登録", new_student_student_diary_path(student_id: @student.id ), class:"btn btn-success"
+        .col-md-2
+          =link_to "テスト範囲登録", new_student_student_test_range_path(student_id: @student.id ), class:"btn btn-success"
+        .col-md-2
+          =link_to "テスト結果・内申点登録", new_student_student_test_score_path(student_id: @student.id ), class:"btn btn-success"
+        .col-md-offset-1.col-md-5
+          |累計勉強時間：
+          =@student.diaries.all.sum(:study_time)
+          |時間ぐらい　　
+          |今まで解いた問題数：
+          =@student.diaries.all.sum(:solve_number)
+          |問ぐらい
+    .row
       br
-      | フォロワー数　○
-      br
-      | フォロー承認待ち　○
-  .row
-    .col-md-2
-      =link_to "勉強内容登録", new_student_student_diary_path(student_id: current_student.id )
-    .col-md-2
-      =link_to "テスト範囲登録", new_student_student_test_range_path(student_id: current_student.id )
-    .col-md-2
-      =link_to "テスト結果登録", new_student_student_test_score_path(student_id: current_student.id )
-  .row
-    .col-md-5
-      |テスト結果
-      - @test_scores.each do |score|
-        = score.title
-        table
-            tr
-              th 国語
-              th 数学
-              th 理科
-              th 社会
-              th 英語
-            tr
-              td
-                = score.japanese
-              td
-                = score.math
-              td
-                = score.science
-              td
-                = score.social
-              td
-                = score.english
+      .col-md-3
+        -if @student == current_student
+          b テスト結果　
+          = link_to"テスト結果一覧へ", student_student_test_scores_path(student_id:current_student.id), class:"btn btn-primary"
+          br
+          br
+          - @test_scores.each do |score|
+              =score.grade
+              |年
+              =score.term
+              |学期
+              =score.title
+              table.table.table-bordered.table-condensed
+                tr
+                  th 国語
+                  th 数学
+                  th 理科
+                  th 社会
+                  th 英語
+                tr
+                  td
+                    = score.japanese
+                  td
+                    = score.math
+                  td
+                    = score.science
+                  td
+                    = score.social
+                  td
+                    = score.english
+                  td
+                    =link_to "詳細", student_student_test_score_path(student_id:@student.id, id:score.id)
 
-      br
-      |ユーザー検索
-    .col-md-7
-      |最近の勉強内容
+        br
+        |生徒名検索
+        br
+        =form_tag(student_search_path, method: :get) do
+          =text_field_tag 'search[content]'
+          =submit_tag "検索", class: "btn btn-default "
+      .col-md-4
+        b 最新のテスト範囲　
+        -@ranges.each do |range|
+          -if @student == current_student
+            =link_to "テスト範囲編集", edit_student_student_test_range_path(student_id:current_student.id, id:range.id), class:"btn btn-primary"
+          br
+          br
+          /最新のテスト範囲表示用テーブル
+          ==render partial: 'range_table', locals: {range: range}
+      .col-md-5
+        b 最近の勉強内容
+        br
+        br
+          table.table.table-condensed
+            tr
+              td
+                |日付
+              td
+                |勉強時間　
+              td
+                |解いた問題　
+              td
+                |自己評価
+              td
+            -@diaries.each do |diary|
+              tr
+                td
+                  =diary.created_at.strftime('%m/%d')
+                  |　
+                td
+                  =diary.study_time
+                  |時間ぐらい　　
+                td
+                  =diary.solve_number
+                  |問ぐらい
+                td id="star-rate-#{diary.id}"
+                td
+                  |　
+                  =link_to "詳細へ", student_student_diary_path(student_id: @student.id, id:diary.id)
+                /星評価表示partial
+                == render partial: 'student/shared/rate_view', locals: {diary: diary}
+          =link_to "過去の勉強内容一覧",student_student_diaries_path(student_id: @student.id), class:"btn btn-primary"

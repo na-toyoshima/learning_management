@@ -12,12 +12,15 @@ class Student::DiariesController < Student::Base
 
   def show
     @diary = Diary.find(params[:id])
-
   end
 
+  def index
+    @student = Student.find(params[:student_id])
+    @diaries = @student.diaries.order("created_at DESC")
+  end
 
   private
   def diary_params
-    params.require(:diary).permit(:study_time, :solve_number, :incorrect_rate, :can_body, :cannot_body, :next_body, :self_rating)
+    params.require(:diary).permit(:study_time, :solve_number, :incorrect_rate, :can_body, :cannot_body, :next_body, :rate)
   end
 end

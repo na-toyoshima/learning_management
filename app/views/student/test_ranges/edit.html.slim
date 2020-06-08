@@ -1,0 +1,84 @@
+.container
+  .row
+    .col-md-6
+      =link_to "テスト範囲詳細に戻る", student_student_test_range_path(student_id:current_student.id, id:@range.id)
+      br
+      =link_to "マイページへ戻る", student_student_path(current_student)
+      br
+      br
+  .row
+    .col-md-7
+      = form_with(model:[@range], url: student_student_test_range_path) do |f|
+        table.table.table-condensed
+          tr
+            | テスト名
+            = f.text_field :grade
+            | 年
+            = f.text_field :term
+            | 学期
+            = f.text_field :title
+            | テスト
+            br
+            br
+          tr
+            | テスト開始日
+            = f.date_field :start_date
+            | 　〜　
+            |テスト終了日
+            = f.date_field :end_date
+            br
+            br
+          tr
+            td
+              | 国語
+            td
+              = f.text_area :japanese
+          tr
+            td
+              | 数学
+            td
+              = f.text_area :math
+          tr
+            td
+              | 理科
+            td
+              = f.text_area :science
+          tr
+            td
+              | 社会
+            td
+              = f.text_area :social
+          tr
+            td
+              |英語
+            td
+              = f.text_area :english
+          tr
+            td
+              |音楽
+            td
+              = f.text_area :music
+          tr
+            td
+              |美術
+            td
+              = f.text_area :art
+          tr
+            td
+              |保健体育
+            td
+              = f.text_area :p_e
+          tr
+            td
+              |技術
+            td
+              = f.text_area :technical_course
+          tr
+            td
+              |家庭科
+            td
+              = f.text_area :home_economics
+          tr
+            td
+              = f.submit "編集完了"
+            td

@@ -1,0 +1,57 @@
+.container
+  .row
+    .col-md-8
+      = form_with(model:[@score], url: student_student_test_score_path) do |f|
+        table
+          tr
+              | テスト名　
+              = f.text_field :grade
+              | 年
+              = f.text_field :term
+              | 学期
+              = f.text_field :title
+              | テスト
+          tr
+            td 国語　　
+            td 数学　　
+            td 理科　　
+            td 社会　　
+            td 英語　　
+          tr
+            td
+              =f.text_field :japanese
+            td
+              =f.text_field :math
+            td
+              =f.text_field :science
+            td
+              =f.text_field :social
+            td
+              =f.text_field :english
+          tr
+            td 音楽　　
+            td 美術　　
+            td 保健体育　　
+            td 技術　　
+            td 家庭科　　
+          tr
+            td
+              =f.text_field :music
+            td
+              =f.text_field :art
+            td
+              =f.text_field :p_e
+            td
+              =f.text_field :technical_course
+            td
+              =f.text_field :home_economics
+          tr
+            td
+              br
+              = f.submit "テスト結果編集"
+  .row
+    .col-md-6
+    br
+      =link_to "テスト結果詳細に戻る", student_student_test_score_path(student_id:current_student.id, id:@score.id)
+      br
+      =link_to "マイページへ戻る", student_student_path(current_student)

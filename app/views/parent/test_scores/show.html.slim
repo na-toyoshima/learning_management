@@ -1,2 +1,51 @@
-h1 Parent::TestScores#show
-p Find me in app/views/parent/test_scores/show.html.slim
+.container
+  .row
+    .col-md-5
+        |テスト名　
+        =@score.grade
+        |年
+        =@score.term
+        |学期
+        =@score.title
+        table.table.table-bordered
+          br
+            tr
+              td 国語
+              td 数学
+              td 理科
+              td 社会
+              td 英語
+            tr
+              td
+                =@score.japanese
+              td
+                =@score.math
+              td
+                =@score.science
+              td
+                =@score.social
+              td
+                =@score.english
+          tr
+            td 音楽
+            td 美術
+            td 保体
+            td 技術
+            td 家庭
+          tr
+            td
+              =@score.music
+            td
+              =@score.art
+            td
+              =@score.p_e
+            td
+              =@score.technical_course
+            td
+              =@score.home_economics
+  .row
+    .col-md-6
+      =link_to "テスト結果一覧へ", parent_student_test_scores_path(student_id: @student.id)
+      br
+      br
+      =link_to "マイページへ戻る", parent_student_path(id: @student.id)

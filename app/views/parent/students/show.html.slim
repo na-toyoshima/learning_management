@@ -1,2 +1,123 @@
-h1 Parent::Students#show
-p Find me in app/views/parent/students/show.html.slim
+.container
+  .row
+    .col-md-2
+      = attachment_image_tag @student, :image, :size =>'140x110'
+    .col-md-2
+      |名前：
+      =@student.name
+      br
+    .col-md-6
+      /最新の日記作成日の翌日の日付を表示
+      - @diary_next.each do |nexts|
+        =nexts.created_at.tomorrow.strftime('%m/%d')
+        |にやること
+        br
+        = simple_format(nexts.next_body)
+  .row
+    .col-md-offset-7.col-md-5
+      |累計勉強時間：
+      =@student.diaries.all.sum(:study_time)
+      |時間ぐらい　　
+      |今まで解いた問題数：
+      =@student.diaries.all.sum(:solve_number)
+      |問ぐらい
+  .row
+    br
+    .col-md-3
+      b テスト結果(直近3件)　
+      = link_to"テスト結果一覧へ", parent_student_test_scores_path(student_id:@student.id), class:"btn btn-primary"
+      br
+      br
+      - @test_scores.each do |score|
+          =score.grade
+          |年
+          =score.term
+          |学期
+          =score.title
+          table.table.table-bordered.table-condensed
+            tr
+              th 国語
+              th 数学
+              th 理科
+              th 社会
+              th 英語
+            tr
+              td
+                = score.japanese
+              td
+                = score.math
+              td
+                = score.science
+              td
+                = score.social
+              td
+                = score.english
+              td
+                =link_to "詳細", parent_student_test_score_path(student_id:@student.id, id:score.id)
+      br
+      br
+      b 内申点(直近3件)　
+      = link_to"内申点一覧へ", parent_student_score_reports_path(student_id:@student.id), class:"btn btn-primary"
+      br
+      br
+      - @score_reports.each do |report|
+          =report.grade
+          |年
+          =report.term
+          |学期 内申点
+          table.table.table-bordered.table-condensed
+            tr
+              th 国語
+              th 数学
+              th 理科
+              th 社会
+              th 英語
+            tr
+              td
+                = report.japanese
+              td
+                = report.math
+              td
+                = report.science
+              td
+                = report.social
+              td
+                = report.english
+    .col-md-4
+      b 最新のテスト範囲　<BR><BR>
+      -@ranges.each do |range|
+        /最新のテスト範囲表示用テーブル
+        ==render partial: 'student/students/range_table', locals: {range: range}
+    .col-md-5
+      b 最近の勉強内容
+      br
+      br
+        table.table.table-condensed
+          tr
+            td
+              |日付
+            td
+              |勉強時間　
+            td
+              |解いた問題　
+            td
+              |自己評価
+            td
+          -@diaries.each do |diary|
+            tr
+              td
+                =diary.created_at.strftime('%m/%d')
+                |　
+              td
+                =diary.study_time
+                |時間ぐらい　　
+              td
+                =diary.solve_number
+                |問ぐらい
+              td id="star-rate-#{diary.id}"
+              td
+                |　
+                =link_to "詳細へ", parent_student_diary_path(student_id: @student.id, id:diary.id)
+              /星評価表示partial
+              == render partial: 'student/shared/rate_view', locals: {diary: diary}
+        =link_to "過去の勉強内容一覧",parent_student_diaries_path(student_id: @student.id), class:"btn btn-primary"

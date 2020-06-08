@@ -8,6 +8,7 @@ html
     = stylesheet_link_tag    'student', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = render 'layouts/student/header'
-    = yield
-    = render 'layouts/student/footer'
+    div id="wrapper"
+      == render 'layouts/student/header'
+      = yield
+      == render 'layouts/student/footer'

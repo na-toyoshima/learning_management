@@ -1,0 +1,52 @@
+.container
+  .row
+    .col-md-8
+      = form_with(model:[@report], url: student_student_score_report_path) do |f|
+        table
+          tr
+              | 内申点名
+              = f.text_field :grade
+              | 年
+              = f.text_field :term
+              | 学期 内申点
+          tr
+            td 国語　　
+            td 数学　　
+            td 理科　　
+            td 社会　　
+            td 英語　　
+          tr
+            td
+              =f.text_field :japanese
+            td
+              =f.text_field :math
+            td
+              =f.text_field :science
+            td
+              =f.text_field :social
+            td
+              =f.text_field :english
+          tr
+            td 音楽　　
+            td 美術　　
+            td 保健体育　　
+            td 技術　　
+            td 家庭科　　
+          tr
+            td
+              =f.text_field :music
+            td
+              =f.text_field :art
+            td
+              =f.text_field :p_e
+            td
+              =f.text_field :technical_course
+            td
+              =f.text_field :home_economics
+          tr
+            td
+              = f.submit "内申点結果編集"
+  .row
+    .col-md-offset-1
+      br
+      =link_to "マイページへ戻る", student_student_path(current_student)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_102449) do
+ActiveRecord::Schema.define(version: 2020_06_04_070343) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "student_id"
@@ -34,6 +34,27 @@ ActiveRecord::Schema.define(version: 2020_05_29_102449) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "diary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "follow_requests", force: :cascade do |t|
+    t.integer "parent_id"
+    t.integer "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parent_follows", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "parents", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -45,6 +66,13 @@ ActiveRecord::Schema.define(version: 2020_05_29_102449) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_parents_on_email", unique: true
     t.index ["reset_password_token"], name: "index_parents_on_reset_password_token", unique: true
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "score_reports", force: :cascade do |t|
@@ -72,7 +100,7 @@ ActiveRecord::Schema.define(version: 2020_05_29_102449) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", default: "", null: false
-    t.integer "image_id"
+    t.string "image_id"
     t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

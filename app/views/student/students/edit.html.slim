@@ -1,0 +1,23 @@
+.container
+  .row
+    .col-md-12
+      =form_with(model:[@student], url: student_student_path) do |f|
+        table
+          tr
+            td
+              |名前
+              =f.text_field :name
+          tr
+            td
+              br
+              |プロフィール画像選択
+              =f.attachment_field :image
+          tr
+            td
+              br
+              =f.submit "情報変更"
+          tr
+            td
+  .row
+    .col-md-offset-2
+      =link_to "マイページへ戻る", student_student_path(current_student)

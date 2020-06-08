@@ -1,0 +1,6 @@
+.container
+  .row
+    .col-md-10
+      |生徒検索結果
+      br
+      == render partial: 'parent/students/search', locals: {students: @records}

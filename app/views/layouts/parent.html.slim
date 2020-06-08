@@ -6,8 +6,12 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'parent', media: 'all', 'data-turbolinks-track': 'reload'
+    script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
+
+
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = render 'layouts/parent/header'
-    = yield
-    = render 'layouts/parent/footer'
+    div id="wrapper"
+      == render 'layouts/parent/header'
+      = yield
+      == render 'layouts/parent/footer'

@@ -1,17 +1,24 @@
 .container
   .row
-    .col-md-12
-      | このサイトについて　
-      = link_to "クリック！", student_about_path
-  .row
-    .col-md-12
-      | 生徒　　
-      = link_to "新規登録", new_student_registration_path
-      | 　　
-      = link_to "ログイン", new_student_session_path
-  .row
-    .col-md-12
-      | 保護者　　
-      = link_to "新規登録", new_parent_registration_path
-      | 　　
-      = link_to "ログイン", new_parent_session_path
+    .col-md-offset-2.col-md-6
+      table.table.table-no-border
+        tr
+          td
+            | このサイトについて　
+          td
+            = link_to "クリック！", student_about_path
+          td
+        tr
+          td
+            | 生徒　
+          td
+            = link_to "新規登録", new_student_registration_path
+          td
+            = link_to "ログイン", new_student_session_path
+        tr
+          td
+            | 保護者　　
+          td
+            = link_to "新規登録", new_parent_registration_path
+          td
+            = link_to "ログイン", new_parent_session_path

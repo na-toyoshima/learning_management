@@ -1,0 +1,2 @@
+module Parent::ScoreReportsHelper
+end

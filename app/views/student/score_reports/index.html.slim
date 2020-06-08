@@ -1,1 +1,51 @@
-内申点index
+.container
+  .row
+    .col-md-12
+      -@reports.each do |report|
+        .col-md-4
+          br
+          =report.grade
+          |年
+          =report.term
+          |学期　内申点
+          table.table.table-bordered
+            tr
+              td 国語
+              td 数学
+              td 理科
+              td 社会
+              td 英語
+            tr
+              td
+                =report.japanese
+              td
+                =report.math
+              td
+                =report.science
+              td
+                =report.social
+              td
+                =report.english
+            tr
+              td 音楽
+              td 美術
+              td 保体
+              td 技術
+              td 家庭
+            tr
+              td
+                =report.music
+              td
+                =report.art
+              td
+                =report.p_e
+              td
+                =report.technical_course
+              td
+                =report.home_economics
+          .row
+            = link_to "#{report.grade}年#{report.term}学期 内申点編集", edit_student_student_score_report_path(student_id: current_student.id, id:report.id)
+  .row
+    br
+    br
+      =link_to "マイページへ戻る", student_student_path(current_student)

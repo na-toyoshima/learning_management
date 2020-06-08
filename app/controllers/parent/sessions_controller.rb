@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Parent::SessionsController < Devise::SessionsController
+  layout 'parent'
   before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -26,7 +27,7 @@ class Parent::SessionsController < Devise::SessionsController
   end
 
   def after_sign_in_path_for(resource)
-    parent_parent_path(resource)
+    parent_parents_path(resource)
   end
 
   def after_sign_out_path_for(resource)
