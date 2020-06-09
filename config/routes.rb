@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     get '/search' => 'search#search'
     post 'follow/:id' => 'relationships#follow', as: 'follow'
     post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
-        resources :students, only: [:show, :edit, :update] do
+    resources :students, only: [:show, :edit, :update] do
       resources :diaries, only: [:show, :edit, :update, :index, :create, :new] do
         resource :favorites, only:[:create, :destroy]
       end
