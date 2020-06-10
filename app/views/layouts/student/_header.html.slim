@@ -29,7 +29,7 @@ header
               =link_to "ログアウト", destroy_student_session_path, method: :delete
           -else
             li
-              =link_to "このサイトについて", student_about_path
+              =link_to "このサイトについて", student_about_path, data: {"turbolinks" => false}
             li
               =link_to "生徒新規登録", new_student_registration_path
             li
