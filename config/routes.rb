@@ -25,6 +25,9 @@ Rails.application.routes.draw do
     end
   end
 
+  root to: 'student/homes#top'
+  get '/about' => 'student/homes#about'
+
   namespace :student do
     root to: 'homes#top'
     get '/about' => 'homes#about'

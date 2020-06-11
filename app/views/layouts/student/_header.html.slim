@@ -7,7 +7,7 @@ header
           a.navbar-brand href="#{student_student_path(current_student.id)}"
             |ゆるすた
         -else
-          a.navbar-brand href="#{student_root_path}"
+          a.navbar-brand href="#{root_path}"
             |ゆるすた
 
       div class="collapse navbar-collapse" id="navbarEeample"
@@ -29,7 +29,7 @@ header
               =link_to "ログアウト", destroy_student_session_path, method: :delete
           -else
             li
-              =link_to "このサイトについて", student_about_path, data: {"turbolinks" => false}
+              =link_to "このサイトについて", about_path, data: {"turbolinks" => false}
             li
               =link_to "生徒新規登録", new_student_registration_path
             li

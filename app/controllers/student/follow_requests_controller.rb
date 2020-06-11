@@ -4,9 +4,10 @@ class Student::FollowRequestsController < Student::Base
   def allow
     request = FollowRequest.find(params[:id])
     parent = Parent.find_by(id:request.parent_id)
+    #parent_followを新規作成
     follow = current_student.parent_follows.new(student_id:current_student.id, parent_id: parent.id)
-    follow.save
-    request.destroy
+    follow.save #parent_followを保存
+    request.destroy #follow_requestは削除
     redirect_back(fallback_location: student_root_path)
   end
 

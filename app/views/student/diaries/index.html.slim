@@ -13,8 +13,9 @@
               |解いた問題数　　
             td
               |自己評価
-            td
-              |いいね
+            -unless @student.id == current_student.id
+              td
+                |いいね
             td
           -@diaries.each do |diary|
             tr
@@ -26,8 +27,9 @@
               td
                 =diary.solve_number
               td id="star-rate-#{diary.id}"
-              td id="favorites-buttons-#{diary.id}"
-                == render partial:'student/favorites/favorite', locals: {student: @student, diary: diary,}
+              -unless diary.student_id == current_student.id
+                td id="favorites-buttons-#{diary.id}"
+                  == render partial:'student/favorites/favorite', locals: {student: @student, diary: diary,}
               td
                 =link_to "詳細へ", student_student_diary_path(student_id: @student.id, id:diary.id)
               /星評価表示partial
