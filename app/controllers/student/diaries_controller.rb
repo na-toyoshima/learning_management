@@ -6,8 +6,13 @@ class Student::DiariesController < Student::Base
   def create
     @diary = Diary.new(diary_params)
     @diary.student_id = current_student.id
-    @diary.save
-    redirect_to student_student_diary_path(student_id: current_student.id, id:@diary.id)
+    if @diary.save
+      redirect_to student_student_diary_path(student_id: current_student.id, id:@diary.id)
+    else
+      @diary = Diary.new
+      render :new
+    end
+
   end
 
   def show

@@ -9,10 +9,15 @@ class Student::TestScoresController < Student::Base
   end
 
   def create
-    @score = TestScore.new(test_score_params)
-    @score.student_id = current_student.id
-    @score.save
-    redirect_to student_student_test_scores_path(student_id: current_student.id, id:@score.id)
+    @test_score = TestScore.new(test_score_params)
+    @test_score.student_id = current_student.id
+    if @test_score.save
+      redirect_to student_student_test_scores_path(student_id: current_student.id, id:@test_score.id)
+    else
+      @test_score = TestScore.new
+      @score_report = ScoreReport.new
+      render :new
+    end
   end
 
   def edit
