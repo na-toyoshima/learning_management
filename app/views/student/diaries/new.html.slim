@@ -4,19 +4,21 @@
       = form_with(model:[@diary], url: student_student_diaries_path) do |f|
         table.table.table-condensed
           tr
-            th 今日の勉強時間
+            | ※全項目入力してください。
+          tr
+            th 今日の勉強時間(半角数字)
             td
               | 大体
               = f.text_field :study_time
               | 時間
           tr
-            th 今日解いた問題数
+            th 今日解いた問題数(半角数字)
             td
               | 大体
               = f.text_field :solve_number
               | 問
           tr
-            th 間違えた問題の割合
+            th 間違えた問題の割合(半角数字)
             td
               | 大体
               = f.text_field :incorrect_rate

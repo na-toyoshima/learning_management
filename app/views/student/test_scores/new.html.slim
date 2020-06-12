@@ -1,16 +1,21 @@
 .container
   .row
     .col-md-8
-      = form_with(model:[@test_score], url: student_student_test_scores_path) do |f|
+      = form_with(model:[@test_score], url: student_student_test_scores_path, local: true) do |f|
+        -if @test_score.errors.any?
+          = @test_score.errors.count
+          | 件のエラーがあります。0以上の半角数字のみ入力してください。
         table
           tr
-              | テスト名
-              = f.text_field :grade
-              | 年
-              = f.text_field :term
-              | 学期
-              = f.text_field :title
-              | テスト<BR><BR>
+            | テスト名
+            = f.text_field :grade
+            | 年
+            = f.text_field :term
+            | 学期
+            = f.text_field :title
+            | テスト<BR><BR>
+          tr
+            | ※半角数字のみ登録できます。
           tr
             td 国語　　
             td 数学　　
@@ -48,17 +53,20 @@
           tr
             td
               = f.submit "テスト結果登録"
+
   .row
     br
     .col-md-8
       = form_with(model:[@score_report], url: student_student_score_reports_path) do |f|
         table
           tr
-              | 内申点名
-              = f.text_field :grade
-              | 年
-              = f.text_field :term
-              | 学期 内申点
+            | 内申点名
+            = f.text_field :grade
+            | 年
+            = f.text_field :term
+            | 学期 内申点<BR><BR>
+          tr
+            | ※半角数字のみ登録できます。
           tr
             td 国語　　
             td 数学　　

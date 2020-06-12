@@ -3,8 +3,13 @@ class Student::ScoreReportsController < Student::Base
   def create
     report = ScoreReport.new(score_report_params)
     report.student_id = current_student.id
-    report.save
-    redirect_to student_student_score_reports_path(student_id: current_student.id, id:report.id)
+    if report.save
+      redirect_to student_student_score_reports_path(student_id: current_student.id, id:report.id)
+    else
+      @test_score = TestScore.new
+      @score_report = ScoreReport.new
+      render 'student/test_scores/new'
+    end
   end
 
   def edit
