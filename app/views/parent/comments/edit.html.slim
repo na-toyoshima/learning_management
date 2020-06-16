@@ -1,0 +1,6 @@
+.container
+  .row
+    |コメント編集
+    = form_with(model:[@diary, @comment], url: parent_student_diary_comment_path(diary_id: @diary.id)) do |f|
+      = f.text_area :body
+      = f.submit "編集"

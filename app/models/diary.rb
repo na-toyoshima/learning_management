@@ -17,5 +17,6 @@ class Diary < ApplicationRecord
 		favorites.where(student_id: student.id).exists?
     end
 
+    has_many :comments
 
 end

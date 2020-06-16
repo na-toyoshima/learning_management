@@ -13,4 +13,6 @@ class Parent < ApplicationRecord
       self.parent_follows.exists?(student_id: student.id)
     end
 
+    has_many :comments
+
 end

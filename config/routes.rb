@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     resources :students, only: [:show] do
       resources :test_scores, only: [:show,:index]
       resources :test_ranges, only: [:show, :index]
-      resources :diaries, only: [:index, :show]
+      resources :diaries, only: [:index, :show] do
+        resources :comments, only:[:create, :edit, :update]
+      end
       resources :score_reports, only:[:index]
       resource :follow_requests, only:[:create, :destroy]
     end
