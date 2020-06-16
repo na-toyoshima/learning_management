@@ -1,6 +1,6 @@
 .container
   .row
-    .col-md-8
+    .col-md-7
       table.table.table-condensed
         tr
           td
@@ -43,6 +43,17 @@
           td id="star-rate-#{@diary.id}"
       /星評価表示partial
       == render partial: 'student/shared/rate_view', locals: {diary: @diary}
+    .col-md-offset-1.col-md-4
+      -if @student == current_student
+        |保護者コメント<BR><BR>
+        - @comments.each do |comment|
+          |保護者名：
+          = comment.parent.name
+          br
+          |本文：
+          = simple_format(comment.body)
+          br
+
   .row
     .col-md-4
       =link_to "マイページへ戻る", student_student_path(current_student)

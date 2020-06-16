@@ -4,13 +4,15 @@
       = form_with(model:[@score], url: student_student_test_score_path) do |f|
         table
           tr
-              | テスト名　
-              = f.text_field :grade
-              | 年
-              = f.text_field :term
-              | 学期
-              = f.text_field :title
-              | テスト
+            | テスト名　
+            = f.text_field :grade, size:'3x1'
+            | 年
+            = f.text_field :term, size:'3x1'
+            | 学期
+            = f.text_field :title, size:'7x1'
+            | テスト
+            br
+            br
           tr
             td 国語　　
             td 数学　　
@@ -19,36 +21,35 @@
             td 英語　　
           tr
             td
-              =f.text_field :japanese
+              =f.text_field :japanese, size:'5x1'
             td
-              =f.text_field :math
+              =f.text_field :math, size:'5x1'
             td
-              =f.text_field :science
+              =f.text_field :science, size:'5x1'
             td
-              =f.text_field :social
+              =f.text_field :social, size:'5x1'
             td
-              =f.text_field :english
+              =f.text_field :english, size:'5x1'
           tr
             td 音楽　　
             td 美術　　
-            td 保健体育　　
+            td 保体　　
             td 技術　　
-            td 家庭科　　
+            td 家庭　　
           tr
             td
-              =f.text_field :music
+              =f.text_field :music, size:'5x1'
             td
-              =f.text_field :art
+              =f.text_field :art, size:'5x1'
             td
-              =f.text_field :p_e
+              =f.text_field :p_e, size:'5x1'
             td
-              =f.text_field :technical_course
+              =f.text_field :technical_course, size:'5x1'
             td
-              =f.text_field :home_economics
-          tr
-            td
-              br
-              = f.submit "テスト結果編集"
+              =f.text_field :home_economics, size:'5x1'
+        .row
+          br
+          = f.submit "テスト結果編集"
   .row
     .col-md-6
     br

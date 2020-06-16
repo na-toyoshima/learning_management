@@ -17,6 +17,8 @@ class Student::DiariesController < Student::Base
 
   def show
     @diary = Diary.find(params[:id])
+    @comments = @diary.comments.all
+    @student = Student.find(params[:student_id])
   end
 
   def index

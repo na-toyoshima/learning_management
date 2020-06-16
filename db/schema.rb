@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_04_070343) do
+ActiveRecord::Schema.define(version: 2020_06_16_125859) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "student_id"
@@ -18,13 +18,15 @@ ActiveRecord::Schema.define(version: 2020_06_04_070343) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "score", precision: 5, scale: 3
+    t.integer "parent_id"
   end
 
   create_table "diaries", force: :cascade do |t|
-    t.float "study_time", default: 0.0, null: false
+    t.float "study_time", null: false
     t.integer "student_id", null: false
-    t.integer "solve_number", default: 0, null: false
-    t.float "incorrect_rate", default: 0.0, null: false
+    t.integer "solve_number", null: false
+    t.float "incorrect_rate", null: false
     t.text "can_body"
     t.text "cannot_body"
     t.text "next_body"
@@ -78,16 +80,16 @@ ActiveRecord::Schema.define(version: 2020_06_04_070343) do
   create_table "score_reports", force: :cascade do |t|
     t.integer "grade", null: false
     t.integer "term", null: false
-    t.integer "japanese", default: 0, null: false
-    t.integer "math", default: 0, null: false
-    t.integer "science", default: 0, null: false
-    t.integer "social", default: 0, null: false
-    t.integer "english", default: 0, null: false
-    t.integer "p_e", default: 0, null: false
-    t.integer "art", default: 0, null: false
-    t.integer "music", default: 0, null: false
-    t.integer "technical_course", default: 0, null: false
-    t.integer "home_economics", default: 0, null: false
+    t.integer "japanese", null: false
+    t.integer "math", null: false
+    t.integer "science", null: false
+    t.integer "social", null: false
+    t.integer "english", null: false
+    t.integer "p_e", null: false
+    t.integer "art", null: false
+    t.integer "music", null: false
+    t.integer "technical_course", null: false
+    t.integer "home_economics", null: false
     t.integer "student_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -133,16 +135,16 @@ ActiveRecord::Schema.define(version: 2020_06_04_070343) do
     t.integer "grade", null: false
     t.integer "term", null: false
     t.string "title", null: false
-    t.integer "japanese", default: 0, null: false
-    t.integer "math", default: 0, null: false
-    t.integer "science", default: 0, null: false
-    t.integer "social", default: 0, null: false
-    t.integer "english", default: 0, null: false
-    t.integer "p_e", default: 0, null: false
-    t.integer "art", default: 0, null: false
-    t.integer "music", default: 0, null: false
-    t.integer "technical_course", default: 0, null: false
-    t.integer "home_economics", default: 0, null: false
+    t.integer "japanese", null: false
+    t.integer "math", null: false
+    t.integer "science", null: false
+    t.integer "social", null: false
+    t.integer "english", null: false
+    t.integer "p_e", null: false
+    t.integer "art", null: false
+    t.integer "music", null: false
+    t.integer "technical_course", null: false
+    t.integer "home_economics", null: false
     t.integer "student_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

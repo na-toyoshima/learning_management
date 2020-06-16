@@ -8,11 +8,11 @@
         table
           tr
             | テスト名
-            = f.text_field :grade
+            = f.text_field :grade, size:'3x1', placeholder: "1"
             | 年
-            = f.text_field :term
+            = f.text_field :term, size:'3x1', placeholder: "2"
             | 学期
-            = f.text_field :title
+            = f.text_field :title, size:'7x1', placeholder: "中間"
             | テスト<BR><BR>
           tr
             | ※半角数字のみ登録できます。
@@ -24,35 +24,35 @@
             td 英語　　
           tr
             td
-              =f.text_field :japanese
+              =f.text_field :japanese, size:'5x1'
             td
-              =f.text_field :math
+              =f.text_field :math, size:'5x1'
             td
-              =f.text_field :science
+              =f.text_field :science, size:'5x1'
             td
-              =f.text_field :social
+              =f.text_field :social, size:'5x1'
             td
-              =f.text_field :english
+              =f.text_field :english, size:'5x1'
           tr
             td 音楽　　
             td 美術　　
-            td 保健体育　　
+            td 保体　　
             td 技術　　
-            td 家庭科　　
+            td 家庭　　
           tr
             td
-              =f.text_field :music
+              =f.text_field :music, size:'5x1'
             td
-              =f.text_field :art
+              =f.text_field :art, size:'5x1'
             td
-              =f.text_field :p_e
+              =f.text_field :p_e, size:'5x1'
             td
-              =f.text_field :technical_course
+              =f.text_field :technical_course, size:'5x1'
             td
-              =f.text_field :home_economics
-          tr
-            td
-              = f.submit "テスト結果登録"
+              =f.text_field :home_economics, size:'5x1'
+        .row
+          br
+          = f.submit "テスト結果登録"
 
   .row
     br
@@ -61,9 +61,9 @@
         table
           tr
             | 内申点名
-            = f.text_field :grade
+            = f.text_field :grade, size:'3x1', placeholder: "1"
             | 年
-            = f.text_field :term
+            = f.text_field :term, size:'3x1', placeholder: "2"
             | 学期 内申点<BR><BR>
           tr
             | ※半角数字のみ登録できます。
@@ -75,35 +75,35 @@
             td 英語　　
           tr
             td
-              =f.text_field :japanese
+              =f.text_field :japanese, size:'5x1'
             td
-              =f.text_field :math
+              =f.text_field :math, size:'5x1'
             td
-              =f.text_field :science
+              =f.text_field :science, size:'5x1'
             td
-              =f.text_field :social
+              =f.text_field :social, size:'5x1'
             td
-              =f.text_field :english
+              =f.text_field :english, size:'5x1'
           tr
             td 音楽　　
             td 美術　　
-            td 保健体育　　
+            td 保体　　
             td 技術　　
-            td 家庭科　　
+            td 家庭　　
           tr
             td
-              =f.text_field :music
+              =f.text_field :music, size:'5x1'
             td
-              =f.text_field :art
+              =f.text_field :art, size:'5x1'
             td
-              =f.text_field :p_e
+              =f.text_field :p_e, size:'5x1'
             td
-              =f.text_field :technical_course
+              =f.text_field :technical_course, size:'5x1'
             td
-              =f.text_field :home_economics
-          tr
-            td
-              = f.submit "内申点結果登録"
+              =f.text_field :home_economics, size:'5x1'
+        .row
+          br
+          = f.submit "内申点結果登録"
   .row
     .col-md-offset-1
       br

@@ -9,19 +9,19 @@
             th 今日の勉強時間(半角数字)
             td
               | 大体
-              = f.text_field :study_time
+              = f.text_field :study_time, placeholder: "2.5", size:'3x1'
               | 時間
           tr
             th 今日解いた問題数(半角数字)
             td
               | 大体
-              = f.text_field :solve_number
+              = f.text_field :solve_number, placeholder: "30", size:'3x1'
               | 問
           tr
             th 間違えた問題の割合(半角数字)
             td
               | 大体
-              = f.text_field :incorrect_rate
+              = f.text_field :incorrect_rate, placeholder: "1.5", size:'3x1'
               | 割
           tr
             th 今日できるようになった問題・意識したこと

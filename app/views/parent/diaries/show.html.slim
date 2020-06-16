@@ -43,6 +43,27 @@
           td id="star-rate-#{@diary.id}"
       /星評価表示partial
       == render partial: 'student/shared/rate_view', locals: {diary: @diary}
+    .col-md-offset-1.col-md-6
+      |コメント入力(なるべくポジティブな言葉を使ってコメントしてください。)
+      =form_with(model:[@diary, @comment], url: parent_student_diary_comments_path(diary_id: @diary.id)) do |f|
+        = f.text_area :body, size:'50x8'
+        <BR>
+        = f.submit 'コメント作成'
+      <BR><BR><BR>
+      |保護者コメント<BR>(ポジティブスコアが-になっていれば修正することをお勧めします)<BR><BR>
+      - @comments.each do |comment|
+        |保護者名：
+        = comment.parent.name
+        br
+        |本文：
+        = simple_format(comment.body)
+        |ポジティブスコア：
+        = comment.score
+        br
+        -if comment.parent_id == current_parent.id
+        =link_to "編集", edit_parent_student_diary_comment_path(student_id: @student.id, diary_id: @diary.id, id:comment.id)
+        br
+        br
   .row
     .col-md-4
       =link_to "生徒詳細ページへ戻る", parent_student_path(id: @student.id)
