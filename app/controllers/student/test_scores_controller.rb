@@ -16,7 +16,7 @@ class Student::TestScoresController < Student::Base
     else
       @test_score = TestScore.new
       @score_report = ScoreReport.new
-      render :new
+      render 'new'
     end
   end
 

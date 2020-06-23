@@ -1,10 +1,14 @@
 .container
   .row
     .col-md-8
-      = form_with(model:[@test_score], url: student_student_test_scores_path, local: true) do |f|
-        -if @test_score.errors.any?
-          = @test_score.errors.count
+      = form_with model: @test_score, local: true, url: student_student_test_scores_path do |f|
+        -if f.object.errors.any?
+          = f.object.errors.count
           | 件のエラーがあります。0以上の半角数字のみ入力してください。
+          ul
+            - f.object.errors.full_messages.each do |message|
+              li
+                = message
         table
           tr
             | テスト名
@@ -57,7 +61,7 @@
   .row
     br
     .col-md-8
-      = form_with(model:[@score_report], url: student_student_score_reports_path) do |f|
+      = form_with(model:[@score_report], url: student_student_score_reports_path, local: true) do |f|
         table
           tr
             | 内申点名
