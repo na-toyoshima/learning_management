@@ -60,3 +60,6 @@
                 =link_to "詳細へ", parent_student_diary_path(student_id: diary.student.id, id:diary.id)
               /星評価表示partial
               == render partial: 'student/shared/rate_view', locals: {diary: diary}
+  .row
+    .col-md-offset-6.col-md-6
+      = paginate @diaries

@@ -9,6 +9,7 @@ class Parent::ParentsController < Parent::Base
     #student_idsに@studentsに入っているidのみmapで抽出
     student_ids = @students.map{|student| student.id}
     #whereは複数を指定することが可能なので、student_idsの値でDiaryを検索し、7件降順で配置
-    @diaries = Diary.where(student_id:student_ids).order("created_at DESC").limit(7)
+    @diaries = Diary.where(student_id:student_ids)
+    @diaries = @diaries.page(params[:page]).reverse_order.per(7)
   end
 end
