@@ -35,5 +35,8 @@
               /星評価表示partial
               == render partial: 'student/shared/rate_view', locals: {diary: diary}
   .row
-    .col-md-offset-3.col-md-4
+    .col-md-6
+      = paginate @diaries
+  .row
+    .col-md-4
       =link_to "詳細ページへ戻る", student_student_path(id:@student.id)

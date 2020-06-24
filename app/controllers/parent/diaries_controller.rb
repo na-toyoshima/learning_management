@@ -8,6 +8,6 @@ class Parent::DiariesController < Parent::Base
 
   def index
     @student = Student.find(params[:student_id])
-    @diaries = @student.diaries.order("created_at DESC")
+    @diaries = @student.diaries.page(params[:page]).reverse_order.per(7)
   end
 end
