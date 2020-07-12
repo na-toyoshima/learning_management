@@ -1,6 +1,6 @@
 # 学習管理アプリ
 
-ゆるスタ(ゆるーく勉強管理をするサイト)
+ゆるスタ(勉強管理アプリケーション)
 
 ## サイト概要
 
@@ -51,5 +51,10 @@
 ## 設計書
 
 ### 機能一覧
+https://docs.google.com/spreadsheets/d/1-TOjtd5JVbBvQ08Y7f7gj93OUVgcrbPV2VLkXLsE7_U/edit?usp=sharing
 
-https://docs.google.com/spreadsheets/d/1-TOjtd5JVbBvQ08Y7f7gj93OUVgcrbPV2VLkXLsE7_U/edit#gid=0
+### 詳細設計
+https://docs.google.com/spreadsheets/d/1ynF-zSbxoXIeMdGvYtfcDJAJPhGVUu8MJMMiTZwgLdU/edit?usp=sharing
+
+### テーブル定義書
+https://docs.google.com/spreadsheets/d/1V0Co2GarJQ72G2znL-tzu1B-LvTV1ufKZ5YTH_iO4zI/edit?usp=sharing
