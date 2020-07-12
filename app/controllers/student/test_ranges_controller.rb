@@ -7,8 +7,12 @@ class Student::TestRangesController < Student::Base
   def create
     @range = TestRange.new(test_range_params)
     @range.student_id = current_student.id
-    @range.save
-    redirect_to student_student_test_range_path(student_id: current_student.id, id:@range.id)
+    if @range.save
+      redirect_to student_student_test_range_path(student_id: current_student.id, id:@range.id)
+    else
+      @test_range = TestRange.new
+      render 'new'
+    end
   end
 
   def show
